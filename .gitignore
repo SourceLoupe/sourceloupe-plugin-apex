@@ -1,0 +1,14 @@
+/tmp
+/out-tsc
+/out
+/src/rules/generated/*
+/src/rules/*.xml
+/src/rule
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.pnp
+.pnp.js
+
+.vscode/*
