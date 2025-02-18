@@ -12,7 +12,8 @@
   "private": true,
   "dependencies": {
     "prettier": "^3.5.1",
-    "sourceloupe": "^0.0.44",
+    "sourceloupe": "^0.0.46",
+    "tree-sitter-sfapex": "^2.4.1",
     "xml2js": "^0.6.2",
     "xmldom": "^0.6.0"
   }

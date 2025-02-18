@@ -3,6 +3,7 @@
 /out
 /src/rules/generated/*
 /src/rules/*.xml
+/src/*.xml
 /src/rule
 /node_modules
 npm-debug.log*
@@ -12,3 +13,4 @@ yarn-error.log*
 .pnp.js
 
 .vscode/*
+/src/test_harness.ts
