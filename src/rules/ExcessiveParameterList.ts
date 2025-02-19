@@ -1,17 +1,16 @@
-
 import {
-    category,
-    context,
-    message,
-    name,
-    priority,
-    query,
-    regex,
-    ResultType,
-    ScanResult,
-    ScanRule,
-    suggestion
-} from 'sourceloupe-types'
+  category,
+  context,
+  message,
+  name,
+  priority,
+  query,
+  regex,
+  ResultType,
+  ScanResult,
+  ScanRule,
+  suggestion,
+} from "sourceloupe-types";
 import Parser from "tree-sitter";
 import * as TreeSitter from "tree-sitter";
 
@@ -24,10 +23,10 @@ import * as TreeSitter from "tree-sitter";
 @query("(formal_parameters) @param")
 @regex("")
 export class ExcessiveParameterList extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        if (node.namedChildCount == 0){
-            return [new ScanResult(this, ResultType.VIOLATION)];
-        }
-        return [];
+  validateNode(node: Parser.SyntaxNode): ScanResult[] {
+    if (node.namedChildCount == 0) {
+      return [new ScanResult(this, ResultType.VIOLATION)];
     }
+    return [];
+  }
 }

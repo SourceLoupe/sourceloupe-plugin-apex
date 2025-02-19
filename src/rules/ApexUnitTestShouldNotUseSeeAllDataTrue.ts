@@ -1,5 +1,16 @@
-
-import {ScanResult,ResultType, ScanRule, context, message, name, priority, query, regex, suggestion, category } from'sourceloupe-types'
+import {
+  ScanResult,
+  ResultType,
+  ScanRule,
+  context,
+  message,
+  name,
+  priority,
+  query,
+  regex,
+  suggestion,
+  category,
+} from "sourceloupe-types";
 import Parser from "tree-sitter";
 
 @name("ApexUnitTestShouldNotUseSeeAllDataTrue")
@@ -11,8 +22,8 @@ import Parser from "tree-sitter";
 @query('((annotation) @anno (#match? @anno "seeAllData"))')
 @regex("")
 export class ApexUnitTestShouldNotUseSeeAllDataTrue extends ScanRule {
-    visitNode(node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this,ResultType.VIOLATION)];
-    }
+  visitNode(node: Parser.SyntaxNode): ScanResult[] {
+    return [new ScanResult(this, ResultType.VIOLATION)];
+  }
 }
 //TODO: Log Completed
