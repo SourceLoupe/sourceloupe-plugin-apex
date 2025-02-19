@@ -1,144 +1,121 @@
-// foo
-import Parser, { QueryCapture } from "tree-sitter";
-import Query from 'tree-sitter';
-import SyntaxNode from "tree-sitter";
-import * as TreeSitter from "tree-sitter";
-import TsSfApex from "tree-sitter-sfapex";
-const testString = `
-/**
- * @description foo
- */
-/**
- * @description
- */
+import {ApexAssertionsShouldIncludeMessage} from './rules/ApexAssertionsShouldIncludeMessage';
+import {ApexBadCrypto} from './rules/ApexBadCrypto';
+import {ApexCRUDViolation} from './rules/ApexCRUDViolation';
+import {ApexCSRF} from './rules/ApexCSRF';
+import {ApexDangerousMethods} from './rules/ApexDangerousMethods';
+import {ApexInsecureEndpoint} from './rules/ApexInsecureEndpoint';
+import {ApexSharingViolations} from './rules/ApexSharingViolations';
+import {ApexSOQLInjection} from './rules/ApexSOQLInjection';
+import {ApexSuggestUsingNamedCred} from './rules/ApexSuggestUsingNamedCred';
+import {ApexUnitTestClassShouldHaveAsserts} from './rules/ApexUnitTestClassShouldHaveAsserts';
+import {ApexUnitTestClassShouldHaveRunAs} from './rules/ApexUnitTestClassShouldHaveRunAs';
+import {ApexUnitTestMethodShouldHaveIsTestAnnotation} from './rules/ApexUnitTestMethodShouldHaveIsTestAnnotation';
+import {ApexUnitTestShouldNotUseSeeAllDataTrue} from './rules/ApexUnitTestShouldNotUseSeeAllDataTrue';
+import {ApexXSSFromEscapeFalse} from './rules/ApexXSSFromEscapeFalse';
+import {ApexXSSFromURLParam} from './rules/ApexXSSFromURLParam';
+import {AvoidDebugStatements} from './rules/AvoidDebugStatements';
+import {AvoidDeeplyNestedIfStmts} from './rules/AvoidDeeplyNestedIfStmts';
+import {AvoidGlobalModifier} from './rules/AvoidGlobalModifier';
+import {AvoidHardcodingId} from './rules/AvoidHardcodingId';
+import {AvoidNonRestrictiveQueries} from './rules/AvoidNonRestrictiveQueries';
+import {ClassHeaderComment} from './rules/ClassHeaderComment';
+import {ClassNamingConventions} from './rules/ClassNamingConventions';
+import {CognitiveComplexity} from './rules/CognitiveComplexity';
+import {CyclomaticComplexity} from './rules/CyclomaticComplexity';
+import {EagerlyLoadedDescribeSObjectResult} from './rules/EagerlyLoadedDescribeSObjectResult';
+import {EmptyCatchBlock} from './rules/EmptyCatchBlock';
+import {EmptyIfStmt} from './rules/EmptyIfStmt';
+import {EmptyStatementBlock} from './rules/EmptyStatementBlock';
+import {EmptyTryOrFinallyBlock} from './rules/EmptyTryOrFinallyBlock';
+import {EmptyWhileStmt} from './rules/EmptyWhileStmt';
+import {ExcessiveClassLength} from './rules/ExcessiveClassLength';
+import {ExcessiveParameterList} from './rules/ExcessiveParameterList';
+import {ExcessivePublicCount} from './rules/ExcessivePublicCount';
+import {FieldDeclarationsShouldBeAtStart} from './rules/FieldDeclarationsShouldBeAtStart';
+import {FieldNamingConventions} from './rules/FieldNamingConventions';
+import {ForLoopsMustUseBraces} from './rules/ForLoopsMustUseBraces';
+import {FormalParameterNamingConventions} from './rules/FormalParameterNamingConventions';
+import {IfElseStmtsMustUseBraces} from './rules/IfElseStmtsMustUseBraces';
+import {IfStmtsMustUseBraces} from './rules/IfStmtsMustUseBraces';
+import {InaccessibleAuraEnabledGetter} from './rules/InaccessibleAuraEnabledGetter';
+import {LocalVariableNamingConventions} from './rules/LocalVariableNamingConventions';
+import {MethodHeaderComment} from './rules/MethodHeaderComment';
+import {MethodNamingConventions} from './rules/MethodNamingConventions';
+import {MethodWithSameNameAsEnclosingClass} from './rules/MethodWithSameNameAsEnclosingClass';
+import {NamingRule} from './rules/NamingRule';
+import {NcssConstructorCount} from './rules/NcssConstructorCount';
+import {NcssMethodCount} from './rules/NcssMethodCount';
+import {NcssTypeCount} from './rules/NcssTypeCount';
+import {OneDeclarationPerLine} from './rules/OneDeclarationPerLine';
+import {OperationWithHighCostInLoop} from './rules/OperationWithHighCostInLoop';
+import {OperationWithLimitsInLoop} from './rules/OperationWithLimitsInLoop';
+import {OverrideBothEqualsAndHashcode} from './rules/OverrideBothEqualsAndHashcode';
+import {PropertyNamingConventions} from './rules/PropertyNamingConventions';
+import {QueueableWithoutFinalizer} from './rules/QueueableWithoutFinalizer';
+import {StdCyclomaticComplexity} from './rules/StdCyclomaticComplexity';
+import {TestMethodsMustBeInTestClasses} from './rules/TestMethodsMustBeInTestClasses';
+import {TooManyFields} from './rules/TooManyFields';
+import {UnusedLocalVariable} from './rules/UnusedLocalVariable';
+import {UnusedMethod} from './rules/UnusedMethod';
+import {WhileLoopsMustUseBraces} from './rules/WhileLoopsMustUseBraces';
 
-
-public with sharing class Test implements Queueable, Finalizer{
-
-public Integer x = 0;
-
-
-@isTest(seeAllData = true)
-    public static void run(){
-    req.setHeader('Authorization', authorizationHeader);
-        Integer i = 0;
-        This.setEndpoint('https://');
-        This.run('http://');
-        i = 'https:';
-        String x = ApexPage.getCurrentPage().getParameters.get('url_param');
-        Database.query('SELECT Id FROM Account' + t1);
-        i = 'http:';
-        for(Integer a = 0; a < 10; a++){
-            for(Integer a = 0; a < 10; a++){
-                i++;
-                for(Integer a = 0; a < 10; a++)
-                    i++;
-
-            }
-        }
-        try{
-        \tSystem.debug('Oh noes!');
-        }
-        catch(Exception ex){
-        }
-        try{
-            Account a = new Account(name = 'Acme1');
-            a = null;
-            Database.SaveResult[] lsr = Database.insert(
-                new Account[]{a, new Account(Name = 'Acme2')},
-                false
-            );
-        }
-        catch(Exception  someDbError){
-            System.debug('It all broke');
-        }
-        String message = '';
-        Integer a, b, c;
-        Integer d, e, f;
-        if( a == b){
-            b = a;
-        }
-        if( b == c )
-            c = b;
-        Integer g;
-        Assert.areEqual(false,false,message + foo);
-        Assert.areEqual(false,false,message);
-        Assert.areEqual(false,false,'ddd');
-        Assert.areEqual(false,false);
-    }
-    public void ohe(Integer a, Integer b, Integer c, Integer d){
-    }
-    public void fooBar(){}
-    
-    public String r = '';
-}`;
-
-function dump(queryString: string): string {
-    // Use dump as a mechanism to allow for ad-hoc ts queries?
-    const result: Array<string> = [];
-    if (queryString === '') {
-        queryString = `(class_declaration @decl)`;
-    }
-    const parser = new Parser();
-    parser.setLanguage(TsSfApex.apex);
-    const tree = parser.parse(testString);
-    const query: TreeSitter.Query = new TreeSitter.Query(TsSfApex.apex, queryString);
-    const globalCaptures: QueryCapture[] = query.captures(tree.rootNode);
-    globalCaptures.forEach((capture) => {
-        result.push(`@${capture.name}=${capture.node.text}`);
-    });
-    return JSON.stringify(result);
-}
-
-export function getMatches(source: string, expression: string) {
-    const parser = new Parser();
-    parser.setLanguage(TsSfApex.apex);
-    const tree: Parser.Tree = parser.parse(source);
-    const query: TreeSitter.Query = new TreeSitter.Query(TsSfApex.apex, expression);
-    const resultingMatches: Parser.QueryMatch[] = query.matches(tree.rootNode);
-    return resultingMatches;
-}
-
-
-export function getCaptures(source: string, expression: string): Parser.QueryCapture[] {
-    const parser = new Parser();
-    parser.setLanguage(TsSfApex.apex);
-    const tree: Parser.Tree = parser.parse(source);
-    const query: TreeSitter.Query = new TreeSitter.Query(TsSfApex.apex, expression);
-    const resultingCaptures: QueryCapture[] = query.captures(tree.rootNode);
-    return resultingCaptures;
-}
-
-export function getNodes(source: string, expression: string): Parser.SyntaxNode[] {
-    const captures:Parser.QueryCapture[] = getCaptures(source, expression);
-    const resultNodes: Parser.SyntaxNode[] = captures.map(capture=>capture.node as Parser.SyntaxNode);
-    return resultNodes;
-}
-
-
-const forNest = `(block(for_statement(block(for_statement(block(for_statement)@for1)@block2)@for3)@for4)@for5)`; //POS
-const forNoBlock = `(block(for_statement(expression_statement)@a)@b)`; //POS
-const ifNest = `(block(if_statement(block(if_statement(block(if_statement)@for1)@block2)@for3)@for4)@for5)`; //POS
-const ifNoBlock = `(block(if_statement(expression_statement)@a)@b)`; //POS
-const findAssert = `((expression_statement)@1 (#match? @1 "Assert"))@2`; // POS
-const multiDeclare = `(local_variable_declaration(variable_declarator)(variable_declarator)@a)`; // POS
-const paramCount = '(formal_parameters(formal_parameter)(formal_parameter)(formal_parameter)(formal_parameter)@found)';
-const isTest = `(class_declaration(modifiers(annotation)@a)(#eq? @a "@isTest"))`;
-const oldTest = `(method_declaration(modifiers(modifier)@a)(#eq? @a "testMethod"))`;
-const seeAllData = `((annotation_key_value key: (identifier) @key (assignment_operator) @operator value: (boolean) @value)(#eq? @key "seeAllData")(#eq? @operator "=") (#eq? @value "true"))@all`;
-const isglobal = `(modifier(global))@1`;
-const systemDebug = `((method_invocation object:(identifier) @object name: (identifier) @name) (#eq? @object "System") (#eq? @name "debug"))@all`;
-const finalizere = `(interfaces(type_list(type_identifier))@e)@a (#eq? @e "Queueable, Finalizer")`;
-const variableDeclarations = `((variable_declarator(identifier)@var))`;
-const className = `((class_declaration name:(identifier)@i)(#match? @i ".*"))`;
-const src: string = testString;
-const fields = `((field_declaration)@a)`;
-const localName = `(local_variable_declaration(variable_declarator(identifier)@b))`;
-const fieldName = `(field_declaration(variable_declarator(identifier)@b))`;
-const formalParam = `(formal_parameter(identifier)@b)`;
-const methodName = `(method_declaration(identifier)@b)`;
-const methodNameFilter = `(method_declaration(identifier)@b)(#match? @b "[a-z]")`;
-const fieldCount = `(class_body(field_declaration) @1)`;
-for(let m of getNodes(src,fieldCount)){
-    console.log(m.text);
-}
+export {ApexAssertionsShouldIncludeMessage};
+export {ApexBadCrypto};
+export {ApexCRUDViolation};
+export {ApexCSRF};
+export {ApexDangerousMethods};
+export {ApexInsecureEndpoint};
+export {ApexSharingViolations};
+export {ApexSOQLInjection};
+export {ApexSuggestUsingNamedCred};
+export {ApexUnitTestClassShouldHaveAsserts};
+export {ApexUnitTestClassShouldHaveRunAs};
+export {ApexUnitTestMethodShouldHaveIsTestAnnotation};
+export {ApexUnitTestShouldNotUseSeeAllDataTrue};
+export {ApexXSSFromEscapeFalse};
+export {ApexXSSFromURLParam};
+export {AvoidDebugStatements};
+export {AvoidDeeplyNestedIfStmts};
+export {AvoidGlobalModifier};
+export {AvoidHardcodingId};
+export {AvoidNonRestrictiveQueries};
+export {ClassHeaderComment};
+export {ClassNamingConventions};
+export {CognitiveComplexity};
+export {CyclomaticComplexity};
+export {EagerlyLoadedDescribeSObjectResult};
+export {EmptyCatchBlock};
+export {EmptyIfStmt};
+export {EmptyStatementBlock};
+export {EmptyTryOrFinallyBlock};
+export {EmptyWhileStmt};
+export {ExcessiveClassLength};
+export {ExcessiveParameterList};
+export {ExcessivePublicCount};
+export {FieldDeclarationsShouldBeAtStart};
+export {FieldNamingConventions};
+export {ForLoopsMustUseBraces};
+export {FormalParameterNamingConventions};
+export {IfElseStmtsMustUseBraces};
+export {IfStmtsMustUseBraces};
+export {InaccessibleAuraEnabledGetter};
+export {LocalVariableNamingConventions};
+export {MethodHeaderComment};
+export {MethodNamingConventions};
+export {MethodWithSameNameAsEnclosingClass};
+export {NamingRule};
+export {NcssConstructorCount};
+export {NcssMethodCount};
+export {NcssTypeCount};
+export {OneDeclarationPerLine};
+export {OperationWithHighCostInLoop};
+export {OperationWithLimitsInLoop};
+export {OverrideBothEqualsAndHashcode};
+export {PropertyNamingConventions};
+export {QueueableWithoutFinalizer};
+export {StdCyclomaticComplexity};
+export {TestMethodsMustBeInTestClasses};
+export {TooManyFields};
+export {UnusedLocalVariable};
+export {UnusedMethod};
+export {WhileLoopsMustUseBraces};
