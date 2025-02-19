@@ -11,17 +11,14 @@ import {
     ScanRule,
     suggestion
 } from 'sourceloupe-types'
-import SyntaxNode from "tree-sitter";
 import Parser from "tree-sitter";
-import Query from "tree-sitter";
-import TreeSitter from "tree-sitter";
-import TsSfApex from "tree-sitter-sfapex";
+
 @name("UnusedLocalVariable")
 @category("bestpractices")
 @context("scan")
 @message("Variable ''{0}'' defined but not used")
 @suggestion("")
-@priority(NaN)
+@priority(1)
 @query("(parser_output)@p")
 @regex("")
 export class UnusedLocalVariable extends ScanRule {
