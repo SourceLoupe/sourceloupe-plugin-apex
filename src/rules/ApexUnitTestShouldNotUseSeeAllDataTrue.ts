@@ -8,7 +8,7 @@ import Parser from "tree-sitter";
 @message("Apex unit tests should not use @isTest(seeAllData = true)")
 @suggestion("")
 @priority(3)
-@query('((annotation_key_value key: (identifier) @key (assignment_operator) @operator value: (boolean) @value)(#eq? @key ,"seeAllData,")(#eq? @operator ,"=,") (#eq? @value ,"true,"))@all')
+@query('((annotation) @anno (#match? @anno "seeAllData"))')
 @regex("")
 export class ApexUnitTestShouldNotUseSeeAllDataTrue extends ScanRule {
     visitNode(node: Parser.SyntaxNode): ScanResult[] {

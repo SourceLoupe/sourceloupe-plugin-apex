@@ -22,9 +22,5 @@ import Parser from "tree-sitter";
 @query("(parser_output)@p")
 @regex("")
 export class NamingRule extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        const results: ScanResult[] = [];
-        results.push(new ScanResult(this,ResultType.VIOLATION));
-        return results;
-    }
+
 }

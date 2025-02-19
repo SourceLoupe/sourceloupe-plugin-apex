@@ -18,7 +18,7 @@ import Parser from "tree-sitter";
 @suggestion("")
 @message("Avoid empty try or finally blocks")
 @priority(3)
-@query("(try_statement (block)@try) (finally_clause (block)@final)")
+@query("((try_statement (block)@try) (finally_clause (block)@final))@all")
 @regex("")
 export class EmptyTryOrFinallyBlock extends ScanRule {
     validateNode(node: Parser.SyntaxNode): ScanResult[] {

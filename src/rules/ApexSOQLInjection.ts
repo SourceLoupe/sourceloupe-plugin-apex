@@ -8,7 +8,7 @@ import Parser from "tree-sitter";
 @message("Avoid untrusted/unescaped variables in DML query")
 @suggestion("")
 @priority(3)
-@query('(method_invocation(identifier)@one(identifier)@two (#match @one "Database") (#match? @two "query"))')
+@query('(method_invocation(identifier)@one(identifier)@two (#match? @one "Database") (#match? @two "query"))')
 @regex("")
 //TODO: Log Completed
 

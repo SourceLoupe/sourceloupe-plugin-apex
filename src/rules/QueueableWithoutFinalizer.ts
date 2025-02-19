@@ -19,7 +19,7 @@ import Parser from "tree-sitter";
 @message("This Queueable doesn't attach a Finalizer")
 @suggestion("")
 @priority(5)
-@query("(interfaces(type_list)@list)")
+@query("(interfaces(type_list)@list)@interface")
 @regex("")
 export class QueueableWithoutFinalizer extends ScanRule {
     validateNode(node: Parser.SyntaxNode): ScanResult[] {

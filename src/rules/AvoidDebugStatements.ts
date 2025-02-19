@@ -8,11 +8,14 @@ import Parser from "tree-sitter";
 @message("Avoid debug statements since they impact on performance")
 @suggestion("")
 @priority(3)
-@query('((method_invocation object:(identifier) @object name: (identifier) @name) (#eq? @object "System") (#eq? @name "debug"))@all')
+@query('(method_invocation) @method')
 @regex("")
 export class AvoidDebugStatements extends ScanRule {
     validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this,ResultType.VIOLATION)];
+        if(node.text.includes("System.debug")) {
+            return [new ScanResult(this,ResultType.VIOLATION)];
+        }
+        return [];
     }
 }
 //TODO: Log Completed

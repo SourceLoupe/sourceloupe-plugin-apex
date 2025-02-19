@@ -22,8 +22,15 @@ import {NamingRule} from "./NamingRule";
 @message("The {0} name ''{1}'' doesn''t match ''{2}''")
 @suggestion("")
 @priority(1)
-@query('(class_declaration name:(identifier) @classname (#not-match? @classname "(VATEST?|[A-Z]{2,4})_[a-zA-Z0-9]*"))')
+@query('(class_declaration name:(identifier) @classname (#not-match? @classname "[a-zA-Z0-9]*"))')
 @regex("")
-export class ClassNamingConventions extends NamingRule {
+export class ClassNamingConventions extends ScanRule {
+    validateNode(node: Parser.SyntaxNode): ScanResult[] {
+        const results: ScanResult[] = [];
+        console.log(node.startPosition);
+        results.push(new ScanResult(this,ResultType.VIOLATION));
+        return results;
+    }
 }
 //TODO: Log Completed
+
