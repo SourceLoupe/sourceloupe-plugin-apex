@@ -4,7 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "rimraf dist && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run format && npm run lint && npm test && npm run build && npm version patch",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "typescript": "^5.5.3"
@@ -13,10 +21,8 @@
   "dependencies": {
     "prettier": "^3.5.1",
     "sourceloupe": "^0.0.47",
-    "sourceloupe-types": "^1.0.1",
+    "sourceloupe-types": "^1.0.2",
     "tree-sitter-sfapex": "^2.4.1",
-    "ts-node": "^10.9.2",
-    "xml2js": "^0.6.2",
-    "xmldom": "^0.6.0"
+    "ts-node": "^10.9.2"
   }
 }
