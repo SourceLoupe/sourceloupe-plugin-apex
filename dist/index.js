@@ -1,124 +1,130 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OperationWithHighCostInLoop = exports.OneDeclarationPerLine = exports.NcssTypeCount = exports.NcssMethodCount = exports.NcssConstructorCount = exports.NamingRule = exports.MethodWithSameNameAsEnclosingClass = exports.MethodNamingConventions = exports.MethodHeaderComment = exports.LocalVariableNamingConventions = exports.InaccessibleAuraEnabledGetter = exports.IfStmtsMustUseBraces = exports.IfElseStmtsMustUseBraces = exports.FormalParameterNamingConventions = exports.ForLoopsMustUseBraces = exports.FieldNamingConventions = exports.FieldDeclarationsShouldBeAtStart = exports.ExcessivePublicCount = exports.ExcessiveParameterList = exports.ExcessiveClassLength = exports.EmptyWhileStmt = exports.EmptyTryOrFinallyBlock = exports.EmptyStatementBlock = exports.EmptyIfStmt = exports.EmptyCatchBlock = exports.EagerlyLoadedDescribeSObjectResult = exports.CyclomaticComplexity = exports.CognitiveComplexity = exports.ClassNamingConventions = exports.ClassHeaderComment = exports.AvoidNonRestrictiveQueries = exports.AvoidHardcodingId = exports.AvoidGlobalModifier = exports.AvoidDeeplyNestedIfStmts = exports.AvoidDebugStatements = exports.ApexXSSFromURLParam = exports.ApexXSSFromEscapeFalse = exports.ApexUnitTestShouldNotUseSeeAllDataTrue = exports.ApexUnitTestMethodShouldHaveIsTestAnnotation = exports.ApexUnitTestClassShouldHaveRunAs = exports.ApexUnitTestClassShouldHaveAsserts = exports.ApexSuggestUsingNamedCred = exports.ApexSOQLInjection = exports.ApexSharingViolations = exports.ApexInsecureEndpoint = exports.ApexDangerousMethods = exports.ApexCSRF = exports.ApexCRUDViolation = exports.ApexBadCrypto = exports.ApexAssertionsShouldIncludeMessage = void 0;
-exports.WhileLoopsMustUseBraces = exports.UnusedMethod = exports.UnusedLocalVariable = exports.TooManyFields = exports.TestMethodsMustBeInTestClasses = exports.StdCyclomaticComplexity = exports.QueueableWithoutFinalizer = exports.PropertyNamingConventions = exports.OverrideBothEqualsAndHashcode = exports.OperationWithLimitsInLoop = void 0;
+const sourceloupe_types_1 = require("sourceloupe-types");
 const ApexAssertionsShouldIncludeMessage_1 = require("./rules/ApexAssertionsShouldIncludeMessage");
-Object.defineProperty(exports, "ApexAssertionsShouldIncludeMessage", { enumerable: true, get: function () { return ApexAssertionsShouldIncludeMessage_1.ApexAssertionsShouldIncludeMessage; } });
 const ApexBadCrypto_1 = require("./rules/ApexBadCrypto");
-Object.defineProperty(exports, "ApexBadCrypto", { enumerable: true, get: function () { return ApexBadCrypto_1.ApexBadCrypto; } });
 const ApexCRUDViolation_1 = require("./rules/ApexCRUDViolation");
-Object.defineProperty(exports, "ApexCRUDViolation", { enumerable: true, get: function () { return ApexCRUDViolation_1.ApexCRUDViolation; } });
 const ApexCSRF_1 = require("./rules/ApexCSRF");
-Object.defineProperty(exports, "ApexCSRF", { enumerable: true, get: function () { return ApexCSRF_1.ApexCSRF; } });
 const ApexDangerousMethods_1 = require("./rules/ApexDangerousMethods");
-Object.defineProperty(exports, "ApexDangerousMethods", { enumerable: true, get: function () { return ApexDangerousMethods_1.ApexDangerousMethods; } });
 const ApexInsecureEndpoint_1 = require("./rules/ApexInsecureEndpoint");
-Object.defineProperty(exports, "ApexInsecureEndpoint", { enumerable: true, get: function () { return ApexInsecureEndpoint_1.ApexInsecureEndpoint; } });
 const ApexSharingViolations_1 = require("./rules/ApexSharingViolations");
-Object.defineProperty(exports, "ApexSharingViolations", { enumerable: true, get: function () { return ApexSharingViolations_1.ApexSharingViolations; } });
 const ApexSOQLInjection_1 = require("./rules/ApexSOQLInjection");
-Object.defineProperty(exports, "ApexSOQLInjection", { enumerable: true, get: function () { return ApexSOQLInjection_1.ApexSOQLInjection; } });
 const ApexSuggestUsingNamedCred_1 = require("./rules/ApexSuggestUsingNamedCred");
-Object.defineProperty(exports, "ApexSuggestUsingNamedCred", { enumerable: true, get: function () { return ApexSuggestUsingNamedCred_1.ApexSuggestUsingNamedCred; } });
 const ApexUnitTestClassShouldHaveAsserts_1 = require("./rules/ApexUnitTestClassShouldHaveAsserts");
-Object.defineProperty(exports, "ApexUnitTestClassShouldHaveAsserts", { enumerable: true, get: function () { return ApexUnitTestClassShouldHaveAsserts_1.ApexUnitTestClassShouldHaveAsserts; } });
 const ApexUnitTestClassShouldHaveRunAs_1 = require("./rules/ApexUnitTestClassShouldHaveRunAs");
-Object.defineProperty(exports, "ApexUnitTestClassShouldHaveRunAs", { enumerable: true, get: function () { return ApexUnitTestClassShouldHaveRunAs_1.ApexUnitTestClassShouldHaveRunAs; } });
 const ApexUnitTestMethodShouldHaveIsTestAnnotation_1 = require("./rules/ApexUnitTestMethodShouldHaveIsTestAnnotation");
-Object.defineProperty(exports, "ApexUnitTestMethodShouldHaveIsTestAnnotation", { enumerable: true, get: function () { return ApexUnitTestMethodShouldHaveIsTestAnnotation_1.ApexUnitTestMethodShouldHaveIsTestAnnotation; } });
 const ApexUnitTestShouldNotUseSeeAllDataTrue_1 = require("./rules/ApexUnitTestShouldNotUseSeeAllDataTrue");
-Object.defineProperty(exports, "ApexUnitTestShouldNotUseSeeAllDataTrue", { enumerable: true, get: function () { return ApexUnitTestShouldNotUseSeeAllDataTrue_1.ApexUnitTestShouldNotUseSeeAllDataTrue; } });
 const ApexXSSFromEscapeFalse_1 = require("./rules/ApexXSSFromEscapeFalse");
-Object.defineProperty(exports, "ApexXSSFromEscapeFalse", { enumerable: true, get: function () { return ApexXSSFromEscapeFalse_1.ApexXSSFromEscapeFalse; } });
 const ApexXSSFromURLParam_1 = require("./rules/ApexXSSFromURLParam");
-Object.defineProperty(exports, "ApexXSSFromURLParam", { enumerable: true, get: function () { return ApexXSSFromURLParam_1.ApexXSSFromURLParam; } });
 const AvoidDebugStatements_1 = require("./rules/AvoidDebugStatements");
-Object.defineProperty(exports, "AvoidDebugStatements", { enumerable: true, get: function () { return AvoidDebugStatements_1.AvoidDebugStatements; } });
 const AvoidDeeplyNestedIfStmts_1 = require("./rules/AvoidDeeplyNestedIfStmts");
-Object.defineProperty(exports, "AvoidDeeplyNestedIfStmts", { enumerable: true, get: function () { return AvoidDeeplyNestedIfStmts_1.AvoidDeeplyNestedIfStmts; } });
 const AvoidGlobalModifier_1 = require("./rules/AvoidGlobalModifier");
-Object.defineProperty(exports, "AvoidGlobalModifier", { enumerable: true, get: function () { return AvoidGlobalModifier_1.AvoidGlobalModifier; } });
 const AvoidHardcodingId_1 = require("./rules/AvoidHardcodingId");
-Object.defineProperty(exports, "AvoidHardcodingId", { enumerable: true, get: function () { return AvoidHardcodingId_1.AvoidHardcodingId; } });
 const AvoidNonRestrictiveQueries_1 = require("./rules/AvoidNonRestrictiveQueries");
-Object.defineProperty(exports, "AvoidNonRestrictiveQueries", { enumerable: true, get: function () { return AvoidNonRestrictiveQueries_1.AvoidNonRestrictiveQueries; } });
 const ClassHeaderComment_1 = require("./rules/ClassHeaderComment");
-Object.defineProperty(exports, "ClassHeaderComment", { enumerable: true, get: function () { return ClassHeaderComment_1.ClassHeaderComment; } });
 const ClassNamingConventions_1 = require("./rules/ClassNamingConventions");
-Object.defineProperty(exports, "ClassNamingConventions", { enumerable: true, get: function () { return ClassNamingConventions_1.ClassNamingConventions; } });
 const CognitiveComplexity_1 = require("./rules/CognitiveComplexity");
-Object.defineProperty(exports, "CognitiveComplexity", { enumerable: true, get: function () { return CognitiveComplexity_1.CognitiveComplexity; } });
 const CyclomaticComplexity_1 = require("./rules/CyclomaticComplexity");
-Object.defineProperty(exports, "CyclomaticComplexity", { enumerable: true, get: function () { return CyclomaticComplexity_1.CyclomaticComplexity; } });
 const EagerlyLoadedDescribeSObjectResult_1 = require("./rules/EagerlyLoadedDescribeSObjectResult");
-Object.defineProperty(exports, "EagerlyLoadedDescribeSObjectResult", { enumerable: true, get: function () { return EagerlyLoadedDescribeSObjectResult_1.EagerlyLoadedDescribeSObjectResult; } });
 const EmptyCatchBlock_1 = require("./rules/EmptyCatchBlock");
-Object.defineProperty(exports, "EmptyCatchBlock", { enumerable: true, get: function () { return EmptyCatchBlock_1.EmptyCatchBlock; } });
 const EmptyIfStmt_1 = require("./rules/EmptyIfStmt");
-Object.defineProperty(exports, "EmptyIfStmt", { enumerable: true, get: function () { return EmptyIfStmt_1.EmptyIfStmt; } });
 const EmptyStatementBlock_1 = require("./rules/EmptyStatementBlock");
-Object.defineProperty(exports, "EmptyStatementBlock", { enumerable: true, get: function () { return EmptyStatementBlock_1.EmptyStatementBlock; } });
 const EmptyTryOrFinallyBlock_1 = require("./rules/EmptyTryOrFinallyBlock");
-Object.defineProperty(exports, "EmptyTryOrFinallyBlock", { enumerable: true, get: function () { return EmptyTryOrFinallyBlock_1.EmptyTryOrFinallyBlock; } });
 const EmptyWhileStmt_1 = require("./rules/EmptyWhileStmt");
-Object.defineProperty(exports, "EmptyWhileStmt", { enumerable: true, get: function () { return EmptyWhileStmt_1.EmptyWhileStmt; } });
 const ExcessiveClassLength_1 = require("./rules/ExcessiveClassLength");
-Object.defineProperty(exports, "ExcessiveClassLength", { enumerable: true, get: function () { return ExcessiveClassLength_1.ExcessiveClassLength; } });
 const ExcessiveParameterList_1 = require("./rules/ExcessiveParameterList");
-Object.defineProperty(exports, "ExcessiveParameterList", { enumerable: true, get: function () { return ExcessiveParameterList_1.ExcessiveParameterList; } });
 const ExcessivePublicCount_1 = require("./rules/ExcessivePublicCount");
-Object.defineProperty(exports, "ExcessivePublicCount", { enumerable: true, get: function () { return ExcessivePublicCount_1.ExcessivePublicCount; } });
 const FieldDeclarationsShouldBeAtStart_1 = require("./rules/FieldDeclarationsShouldBeAtStart");
-Object.defineProperty(exports, "FieldDeclarationsShouldBeAtStart", { enumerable: true, get: function () { return FieldDeclarationsShouldBeAtStart_1.FieldDeclarationsShouldBeAtStart; } });
 const FieldNamingConventions_1 = require("./rules/FieldNamingConventions");
-Object.defineProperty(exports, "FieldNamingConventions", { enumerable: true, get: function () { return FieldNamingConventions_1.FieldNamingConventions; } });
 const ForLoopsMustUseBraces_1 = require("./rules/ForLoopsMustUseBraces");
-Object.defineProperty(exports, "ForLoopsMustUseBraces", { enumerable: true, get: function () { return ForLoopsMustUseBraces_1.ForLoopsMustUseBraces; } });
 const FormalParameterNamingConventions_1 = require("./rules/FormalParameterNamingConventions");
-Object.defineProperty(exports, "FormalParameterNamingConventions", { enumerable: true, get: function () { return FormalParameterNamingConventions_1.FormalParameterNamingConventions; } });
 const IfElseStmtsMustUseBraces_1 = require("./rules/IfElseStmtsMustUseBraces");
-Object.defineProperty(exports, "IfElseStmtsMustUseBraces", { enumerable: true, get: function () { return IfElseStmtsMustUseBraces_1.IfElseStmtsMustUseBraces; } });
 const IfStmtsMustUseBraces_1 = require("./rules/IfStmtsMustUseBraces");
-Object.defineProperty(exports, "IfStmtsMustUseBraces", { enumerable: true, get: function () { return IfStmtsMustUseBraces_1.IfStmtsMustUseBraces; } });
 const InaccessibleAuraEnabledGetter_1 = require("./rules/InaccessibleAuraEnabledGetter");
-Object.defineProperty(exports, "InaccessibleAuraEnabledGetter", { enumerable: true, get: function () { return InaccessibleAuraEnabledGetter_1.InaccessibleAuraEnabledGetter; } });
 const LocalVariableNamingConventions_1 = require("./rules/LocalVariableNamingConventions");
-Object.defineProperty(exports, "LocalVariableNamingConventions", { enumerable: true, get: function () { return LocalVariableNamingConventions_1.LocalVariableNamingConventions; } });
 const MethodHeaderComment_1 = require("./rules/MethodHeaderComment");
-Object.defineProperty(exports, "MethodHeaderComment", { enumerable: true, get: function () { return MethodHeaderComment_1.MethodHeaderComment; } });
 const MethodNamingConventions_1 = require("./rules/MethodNamingConventions");
-Object.defineProperty(exports, "MethodNamingConventions", { enumerable: true, get: function () { return MethodNamingConventions_1.MethodNamingConventions; } });
 const MethodWithSameNameAsEnclosingClass_1 = require("./rules/MethodWithSameNameAsEnclosingClass");
-Object.defineProperty(exports, "MethodWithSameNameAsEnclosingClass", { enumerable: true, get: function () { return MethodWithSameNameAsEnclosingClass_1.MethodWithSameNameAsEnclosingClass; } });
 const NamingRule_1 = require("./rules/NamingRule");
-Object.defineProperty(exports, "NamingRule", { enumerable: true, get: function () { return NamingRule_1.NamingRule; } });
 const NcssConstructorCount_1 = require("./rules/NcssConstructorCount");
-Object.defineProperty(exports, "NcssConstructorCount", { enumerable: true, get: function () { return NcssConstructorCount_1.NcssConstructorCount; } });
 const NcssMethodCount_1 = require("./rules/NcssMethodCount");
-Object.defineProperty(exports, "NcssMethodCount", { enumerable: true, get: function () { return NcssMethodCount_1.NcssMethodCount; } });
 const NcssTypeCount_1 = require("./rules/NcssTypeCount");
-Object.defineProperty(exports, "NcssTypeCount", { enumerable: true, get: function () { return NcssTypeCount_1.NcssTypeCount; } });
 const OneDeclarationPerLine_1 = require("./rules/OneDeclarationPerLine");
-Object.defineProperty(exports, "OneDeclarationPerLine", { enumerable: true, get: function () { return OneDeclarationPerLine_1.OneDeclarationPerLine; } });
 const OperationWithHighCostInLoop_1 = require("./rules/OperationWithHighCostInLoop");
-Object.defineProperty(exports, "OperationWithHighCostInLoop", { enumerable: true, get: function () { return OperationWithHighCostInLoop_1.OperationWithHighCostInLoop; } });
 const OperationWithLimitsInLoop_1 = require("./rules/OperationWithLimitsInLoop");
-Object.defineProperty(exports, "OperationWithLimitsInLoop", { enumerable: true, get: function () { return OperationWithLimitsInLoop_1.OperationWithLimitsInLoop; } });
 const OverrideBothEqualsAndHashcode_1 = require("./rules/OverrideBothEqualsAndHashcode");
-Object.defineProperty(exports, "OverrideBothEqualsAndHashcode", { enumerable: true, get: function () { return OverrideBothEqualsAndHashcode_1.OverrideBothEqualsAndHashcode; } });
 const PropertyNamingConventions_1 = require("./rules/PropertyNamingConventions");
-Object.defineProperty(exports, "PropertyNamingConventions", { enumerable: true, get: function () { return PropertyNamingConventions_1.PropertyNamingConventions; } });
 const QueueableWithoutFinalizer_1 = require("./rules/QueueableWithoutFinalizer");
-Object.defineProperty(exports, "QueueableWithoutFinalizer", { enumerable: true, get: function () { return QueueableWithoutFinalizer_1.QueueableWithoutFinalizer; } });
 const StdCyclomaticComplexity_1 = require("./rules/StdCyclomaticComplexity");
-Object.defineProperty(exports, "StdCyclomaticComplexity", { enumerable: true, get: function () { return StdCyclomaticComplexity_1.StdCyclomaticComplexity; } });
 const TestMethodsMustBeInTestClasses_1 = require("./rules/TestMethodsMustBeInTestClasses");
-Object.defineProperty(exports, "TestMethodsMustBeInTestClasses", { enumerable: true, get: function () { return TestMethodsMustBeInTestClasses_1.TestMethodsMustBeInTestClasses; } });
 const TooManyFields_1 = require("./rules/TooManyFields");
-Object.defineProperty(exports, "TooManyFields", { enumerable: true, get: function () { return TooManyFields_1.TooManyFields; } });
 const UnusedLocalVariable_1 = require("./rules/UnusedLocalVariable");
-Object.defineProperty(exports, "UnusedLocalVariable", { enumerable: true, get: function () { return UnusedLocalVariable_1.UnusedLocalVariable; } });
 const UnusedMethod_1 = require("./rules/UnusedMethod");
-Object.defineProperty(exports, "UnusedMethod", { enumerable: true, get: function () { return UnusedMethod_1.UnusedMethod; } });
 const WhileLoopsMustUseBraces_1 = require("./rules/WhileLoopsMustUseBraces");
-Object.defineProperty(exports, "WhileLoopsMustUseBraces", { enumerable: true, get: function () { return WhileLoopsMustUseBraces_1.WhileLoopsMustUseBraces; } });
+class ApexPlugin extends sourceloupe_types_1.SourceLoupePlugin {
+    getRules() {
+        return [
+            new ApexAssertionsShouldIncludeMessage_1.ApexAssertionsShouldIncludeMessage(),
+            new ApexBadCrypto_1.ApexBadCrypto(),
+            new ApexCRUDViolation_1.ApexCRUDViolation(),
+            new ApexCSRF_1.ApexCSRF(),
+            new ApexDangerousMethods_1.ApexDangerousMethods(),
+            new ApexInsecureEndpoint_1.ApexInsecureEndpoint(),
+            new ApexSharingViolations_1.ApexSharingViolations(),
+            new ApexSOQLInjection_1.ApexSOQLInjection(),
+            new ApexSuggestUsingNamedCred_1.ApexSuggestUsingNamedCred(),
+            new ApexUnitTestClassShouldHaveAsserts_1.ApexUnitTestClassShouldHaveAsserts(),
+            new ApexUnitTestClassShouldHaveRunAs_1.ApexUnitTestClassShouldHaveRunAs(),
+            new ApexUnitTestMethodShouldHaveIsTestAnnotation_1.ApexUnitTestMethodShouldHaveIsTestAnnotation(),
+            new ApexUnitTestShouldNotUseSeeAllDataTrue_1.ApexUnitTestShouldNotUseSeeAllDataTrue(),
+            new ApexXSSFromEscapeFalse_1.ApexXSSFromEscapeFalse(),
+            new ApexXSSFromURLParam_1.ApexXSSFromURLParam(),
+            new AvoidDebugStatements_1.AvoidDebugStatements(),
+            new AvoidDeeplyNestedIfStmts_1.AvoidDeeplyNestedIfStmts(),
+            new AvoidGlobalModifier_1.AvoidGlobalModifier(),
+            new AvoidHardcodingId_1.AvoidHardcodingId(),
+            new AvoidNonRestrictiveQueries_1.AvoidNonRestrictiveQueries(),
+            new ClassHeaderComment_1.ClassHeaderComment(),
+            new ClassNamingConventions_1.ClassNamingConventions(),
+            new CognitiveComplexity_1.CognitiveComplexity(),
+            new CyclomaticComplexity_1.CyclomaticComplexity(),
+            new EagerlyLoadedDescribeSObjectResult_1.EagerlyLoadedDescribeSObjectResult(),
+            new EmptyCatchBlock_1.EmptyCatchBlock(),
+            new EmptyIfStmt_1.EmptyIfStmt(),
+            new EmptyStatementBlock_1.EmptyStatementBlock(),
+            new EmptyTryOrFinallyBlock_1.EmptyTryOrFinallyBlock(),
+            new EmptyWhileStmt_1.EmptyWhileStmt(),
+            new ExcessiveClassLength_1.ExcessiveClassLength(),
+            new ExcessiveParameterList_1.ExcessiveParameterList(),
+            new ExcessivePublicCount_1.ExcessivePublicCount(),
+            new FieldDeclarationsShouldBeAtStart_1.FieldDeclarationsShouldBeAtStart(),
+            new FieldNamingConventions_1.FieldNamingConventions(),
+            new ForLoopsMustUseBraces_1.ForLoopsMustUseBraces(),
+            new FormalParameterNamingConventions_1.FormalParameterNamingConventions(),
+            new IfElseStmtsMustUseBraces_1.IfElseStmtsMustUseBraces(),
+            new IfStmtsMustUseBraces_1.IfStmtsMustUseBraces(),
+            new InaccessibleAuraEnabledGetter_1.InaccessibleAuraEnabledGetter(),
+            new LocalVariableNamingConventions_1.LocalVariableNamingConventions(),
+            new MethodHeaderComment_1.MethodHeaderComment(),
+            new MethodNamingConventions_1.MethodNamingConventions(),
+            new MethodWithSameNameAsEnclosingClass_1.MethodWithSameNameAsEnclosingClass(),
+            new NamingRule_1.NamingRule(),
+            new NcssConstructorCount_1.NcssConstructorCount(),
+            new NcssMethodCount_1.NcssMethodCount(),
+            new NcssTypeCount_1.NcssTypeCount(),
+            new OneDeclarationPerLine_1.OneDeclarationPerLine(),
+            new OperationWithHighCostInLoop_1.OperationWithHighCostInLoop(),
+            new OperationWithLimitsInLoop_1.OperationWithLimitsInLoop(),
+            new OverrideBothEqualsAndHashcode_1.OverrideBothEqualsAndHashcode(),
+            new PropertyNamingConventions_1.PropertyNamingConventions(),
+            new QueueableWithoutFinalizer_1.QueueableWithoutFinalizer(),
+            new StdCyclomaticComplexity_1.StdCyclomaticComplexity(),
+            new TestMethodsMustBeInTestClasses_1.TestMethodsMustBeInTestClasses(),
+            new TooManyFields_1.TooManyFields(),
+            new UnusedLocalVariable_1.UnusedLocalVariable(),
+            new UnusedMethod_1.UnusedMethod(),
+            new WhileLoopsMustUseBraces_1.WhileLoopsMustUseBraces()
+        ];
+    }
+}
+exports.default = ApexPlugin;

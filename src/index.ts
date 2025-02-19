@@ -1,3 +1,4 @@
+import { ScanRule, SourceLoupePlugin } from 'sourceloupe-types';
 import {ApexAssertionsShouldIncludeMessage} from './rules/ApexAssertionsShouldIncludeMessage';
 import {ApexBadCrypto} from './rules/ApexBadCrypto';
 import {ApexCRUDViolation} from './rules/ApexCRUDViolation';
@@ -59,63 +60,69 @@ import {UnusedLocalVariable} from './rules/UnusedLocalVariable';
 import {UnusedMethod} from './rules/UnusedMethod';
 import {WhileLoopsMustUseBraces} from './rules/WhileLoopsMustUseBraces';
 
-export {ApexAssertionsShouldIncludeMessage};
-export {ApexBadCrypto};
-export {ApexCRUDViolation};
-export {ApexCSRF};
-export {ApexDangerousMethods};
-export {ApexInsecureEndpoint};
-export {ApexSharingViolations};
-export {ApexSOQLInjection};
-export {ApexSuggestUsingNamedCred};
-export {ApexUnitTestClassShouldHaveAsserts};
-export {ApexUnitTestClassShouldHaveRunAs};
-export {ApexUnitTestMethodShouldHaveIsTestAnnotation};
-export {ApexUnitTestShouldNotUseSeeAllDataTrue};
-export {ApexXSSFromEscapeFalse};
-export {ApexXSSFromURLParam};
-export {AvoidDebugStatements};
-export {AvoidDeeplyNestedIfStmts};
-export {AvoidGlobalModifier};
-export {AvoidHardcodingId};
-export {AvoidNonRestrictiveQueries};
-export {ClassHeaderComment};
-export {ClassNamingConventions};
-export {CognitiveComplexity};
-export {CyclomaticComplexity};
-export {EagerlyLoadedDescribeSObjectResult};
-export {EmptyCatchBlock};
-export {EmptyIfStmt};
-export {EmptyStatementBlock};
-export {EmptyTryOrFinallyBlock};
-export {EmptyWhileStmt};
-export {ExcessiveClassLength};
-export {ExcessiveParameterList};
-export {ExcessivePublicCount};
-export {FieldDeclarationsShouldBeAtStart};
-export {FieldNamingConventions};
-export {ForLoopsMustUseBraces};
-export {FormalParameterNamingConventions};
-export {IfElseStmtsMustUseBraces};
-export {IfStmtsMustUseBraces};
-export {InaccessibleAuraEnabledGetter};
-export {LocalVariableNamingConventions};
-export {MethodHeaderComment};
-export {MethodNamingConventions};
-export {MethodWithSameNameAsEnclosingClass};
-export {NamingRule};
-export {NcssConstructorCount};
-export {NcssMethodCount};
-export {NcssTypeCount};
-export {OneDeclarationPerLine};
-export {OperationWithHighCostInLoop};
-export {OperationWithLimitsInLoop};
-export {OverrideBothEqualsAndHashcode};
-export {PropertyNamingConventions};
-export {QueueableWithoutFinalizer};
-export {StdCyclomaticComplexity};
-export {TestMethodsMustBeInTestClasses};
-export {TooManyFields};
-export {UnusedLocalVariable};
-export {UnusedMethod};
-export {WhileLoopsMustUseBraces};
+export default class ApexPlugin extends SourceLoupePlugin {     
+    getRules(): ScanRule[] {
+        return[
+           new ApexAssertionsShouldIncludeMessage(),
+           new ApexBadCrypto(),
+           new ApexCRUDViolation(),
+           new ApexCSRF(),
+           new ApexDangerousMethods(),
+           new ApexInsecureEndpoint(),
+           new ApexSharingViolations(),
+           new ApexSOQLInjection(),
+           new ApexSuggestUsingNamedCred(),
+           new ApexUnitTestClassShouldHaveAsserts(),
+           new ApexUnitTestClassShouldHaveRunAs(),
+           new ApexUnitTestMethodShouldHaveIsTestAnnotation(),
+           new ApexUnitTestShouldNotUseSeeAllDataTrue(),
+           new ApexXSSFromEscapeFalse(),
+           new ApexXSSFromURLParam(),
+           new AvoidDebugStatements(),
+           new AvoidDeeplyNestedIfStmts(),
+           new AvoidGlobalModifier(),
+           new AvoidHardcodingId(),
+           new AvoidNonRestrictiveQueries(),
+           new ClassHeaderComment(),
+           new ClassNamingConventions(),
+           new CognitiveComplexity(),
+           new CyclomaticComplexity(),
+           new EagerlyLoadedDescribeSObjectResult(),
+           new EmptyCatchBlock(),
+           new EmptyIfStmt(),
+           new EmptyStatementBlock(),
+           new EmptyTryOrFinallyBlock(),
+           new EmptyWhileStmt(),
+           new ExcessiveClassLength(),
+           new ExcessiveParameterList(),
+           new ExcessivePublicCount(),
+           new FieldDeclarationsShouldBeAtStart(),
+           new FieldNamingConventions(),
+           new ForLoopsMustUseBraces(),
+           new FormalParameterNamingConventions(),
+           new IfElseStmtsMustUseBraces(),
+           new IfStmtsMustUseBraces(),
+           new InaccessibleAuraEnabledGetter(),
+           new LocalVariableNamingConventions(),
+           new MethodHeaderComment(),
+           new MethodNamingConventions(),
+           new MethodWithSameNameAsEnclosingClass(),
+           new NamingRule(),
+           new NcssConstructorCount(),
+           new NcssMethodCount(),
+           new NcssTypeCount(),
+           new OneDeclarationPerLine(),
+           new OperationWithHighCostInLoop(),
+           new OperationWithLimitsInLoop(),
+           new OverrideBothEqualsAndHashcode(),
+           new PropertyNamingConventions(),
+           new QueueableWithoutFinalizer(),
+           new StdCyclomaticComplexity(),
+           new TestMethodsMustBeInTestClasses(),
+           new TooManyFields(),
+           new UnusedLocalVariable(),
+           new UnusedMethod(),
+           new WhileLoopsMustUseBraces()
+        ];
+    }
+}
