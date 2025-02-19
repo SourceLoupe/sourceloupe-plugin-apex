@@ -1,32 +1,32 @@
 import {
-  category,
-  context,
-  message,
-  name,
-  priority,
-  query,
-  regex,
-  ResultType,
-  ScanResult,
-  ScanRule,
-  suggestion,
-} from "sourceloupe-types";
-import Parser from "tree-sitter";
-@name("ApexCSRF")
-@category("errorprone")
-@context("scan")
-@suggestion("")
-@message("Avoid making DML operations in Apex class constructor")
+    category,
+    context,
+    message,
+    name,
+    priority,
+    query,
+    regex,
+    ResultType,
+    ScanResult,
+    ScanRule,
+    suggestion,
+} from 'sourceloupe-types';
+import Parser from 'tree-sitter';
+@name('ApexCSRF')
+@category('errorprone')
+@context('scan')
+@suggestion('')
+@message('Avoid making DML operations in Apex class constructor')
 @priority(3)
 @query(
-  '(constructor_body (expression_statement (query_expression) @soql))(constructor_body (expression_statement (dml_expression) @dml))(constructor_body (expression_statement (method_invocation) @method (#match? @method "Database.query|Database.queryWithBinds")))',
+    '(constructor_body (expression_statement (query_expression) @soql))(constructor_body (expression_statement (dml_expression) @dml))(constructor_body (expression_statement (method_invocation) @method (#match? @method "Database.query|Database.queryWithBinds")))'
 )
-@regex("")
+@regex('')
 export class ApexCSRF extends ScanRule {
-  validateNode(node: Parser.SyntaxNode): ScanResult[] {
-    const results: ScanResult[] = [];
-    const result: ScanResult = new ScanResult(this, ResultType.VIOLATION);
-    results.push(result);
-    return results;
-  }
+    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
+        const results: ScanResult[] = [];
+        const result: ScanResult = new ScanResult(this, ResultType.VIOLATION);
+        results.push(result);
+        return results;
+    }
 }
