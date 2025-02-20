@@ -1,16 +1,16 @@
 import {
-    category,
-    context,
-    message,
-    name,
-    priority,
-    query,
-    regex,
-    ResultType,
-    ScanResult,
-    ScanRule,
-    suggestion
-} from 'sourceloupe-types'
+  category,
+  context,
+  message,
+  name,
+  priority,
+  query,
+  regex,
+  ResultType,
+  ScanResult,
+  ScanRule,
+  suggestion,
+} from "sourceloupe-types";
 import Parser from "tree-sitter";
 
 @name("OneDeclarationPerLine")
@@ -22,7 +22,7 @@ import Parser from "tree-sitter";
 @query("((variable_declarator) @one (variable_declarator) @two)")
 @regex("")
 export class OneDeclarationPerLine extends ScanRule {
-    validateNodes(nodes: Parser.SyntaxNode[]): ScanResult[] {
-        return [new ScanResult(this,ResultType.VIOLATION)];
-    }
+  validateNodes(nodes: Parser.SyntaxNode[]): ScanResult[] {
+    return [new ScanResult(this, ResultType.VIOLATION)];
+  }
 }

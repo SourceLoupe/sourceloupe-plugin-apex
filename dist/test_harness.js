@@ -1,7 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
 Object.defineProperty(exports, "__esModule", { value: true });
 const QueueableWithoutFinalizer_1 = require("./rules/QueueableWithoutFinalizer");
 const ApexSharingViolations_1 = require("./rules/ApexSharingViolations");
@@ -121,17 +123,20 @@ public Integer x = 0;
 //     }
 // }
 function runRule(reuse) {
-    const parser = new tree_sitter_2.default();
-    parser.setLanguage(tree_sitter_sfapex_1.default.apex);
-    const tree = parser.parse(testString);
-    let query;
-    let globalCaptures;
-    query = new tree_sitter_1.default.Query(tree_sitter_sfapex_1.default.apex, reuse.Query);
-    globalCaptures = query.captures(tree.rootNode);
-    console.log(globalCaptures);
-    const nodes = globalCaptures.map((captureInstance) => {
-        return captureInstance.node;
-    });
+  const parser = new tree_sitter_2.default();
+  parser.setLanguage(tree_sitter_sfapex_1.default.apex);
+  const tree = parser.parse(testString);
+  let query;
+  let globalCaptures;
+  query = new tree_sitter_1.default.Query(
+    tree_sitter_sfapex_1.default.apex,
+    reuse.Query,
+  );
+  globalCaptures = query.captures(tree.rootNode);
+  console.log(globalCaptures);
+  const nodes = globalCaptures.map((captureInstance) => {
+    return captureInstance.node;
+  });
 }
 //
 // let ruleReuse: ScanRule = new ApexAssertionsShouldIncludeMessage();
@@ -144,9 +149,11 @@ r = new ApexSuggestUsingNamedCred_1.ApexSuggestUsingNamedCred();
 runRule(r);
 r = new ApexUnitTestClassShouldHaveRunAs_1.ApexUnitTestClassShouldHaveRunAs();
 runRule(r);
-r = new ApexUnitTestMethodShouldHaveIsTestAnnotation_1.ApexUnitTestMethodShouldHaveIsTestAnnotation();
+r =
+  new ApexUnitTestMethodShouldHaveIsTestAnnotation_1.ApexUnitTestMethodShouldHaveIsTestAnnotation();
 runRule(r);
-r = new ApexUnitTestShouldNotUseSeeAllDataTrue_1.ApexUnitTestShouldNotUseSeeAllDataTrue();
+r =
+  new ApexUnitTestShouldNotUseSeeAllDataTrue_1.ApexUnitTestShouldNotUseSeeAllDataTrue();
 runRule(r);
 // r = new AvoidDebugStatements();
 // runRule(r);

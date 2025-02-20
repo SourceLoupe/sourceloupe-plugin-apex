@@ -1,16 +1,16 @@
 import {
-    category,
-    context,
-    message,
-    name,
-    priority,
-    query,
-    regex,
-    ResultType,
-    ScanResult,
-    ScanRule,
-    suggestion
-} from 'sourceloupe-types'
+  category,
+  context,
+  message,
+  name,
+  priority,
+  query,
+  regex,
+  ResultType,
+  ScanResult,
+  ScanRule,
+  suggestion,
+} from "sourceloupe-types";
 import Parser from "tree-sitter";
 
 @name("ApexUnitTestMethodShouldHaveIsTestAnnotation")
@@ -21,10 +21,8 @@ import Parser from "tree-sitter";
 @priority(3)
 @query("(modifiers(modifier(testMethod)@mod))")
 @regex("")
-//TODO: Log Completed
-
 export class ApexUnitTestMethodShouldHaveIsTestAnnotation extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this,ResultType.VIOLATION)];
-    }
+  validateNode(node: Parser.SyntaxNode): ScanResult[] {
+    return [new ScanResult(this, ResultType.VIOLATION)];
+  }
 }

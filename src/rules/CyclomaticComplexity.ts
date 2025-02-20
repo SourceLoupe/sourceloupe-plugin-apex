@@ -1,16 +1,16 @@
 import {
-    category,
-    context,
-    message,
-    name,
-    priority,
-    query,
-    regex,
-    ResultType,
-    ScanResult,
-    ScanRule,
-    suggestion
-} from 'sourceloupe-types'
+  category,
+  context,
+  message,
+  name,
+  priority,
+  query,
+  regex,
+  ResultType,
+  ScanResult,
+  ScanRule,
+  suggestion,
+} from "sourceloupe-types";
 import Parser from "tree-sitter";
 
 @name("CyclomaticComplexity")
@@ -22,32 +22,34 @@ import Parser from "tree-sitter";
 @query("(parser_output)@p")
 @regex("")
 export class CyclomaticComplexity extends ScanRule {
+  validateNode(node: Parser.SyntaxNode): ScanResult[] {
+    const rating: number = this.calculateCyclomaticComplexity(node);
+    if (rating > 20) {
+      return [new ScanResult(this, ResultType.VIOLATION)];
+    }
+    return [];
+  }
 
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        const rating: number = this.calculateCyclomaticComplexity(node);
-        if(rating > 20){
-            return [new ScanResult(this,ResultType.VIOLATION)];
-        }
-        return [];
+  calculateCyclomaticComplexity(node: Parser.SyntaxNode): number {
+    let complexity = 1; // Start with one for the entry point of the function
+
+    function traverse(node: any) {
+      if (node.type === "if_statement") {
+        complexity += 1;
+      } else if (
+        node.type === "for_statement" ||
+        node.type === "while_statement"
+      ) {
+        complexity += 1;
+      } else if (node.type === "try_statement") {
+        complexity += 2; // One for the try block, one for each catch block
+      }
+
+      node.children.forEach(traverse);
     }
 
-    calculateCyclomaticComplexity(node: any): number {
-        let complexity = 1; // Start with one for the entry point of the function
+    traverse(node);
 
-        function traverse(node: any) {
-            if (node.type === 'if_statement') {
-                complexity += 1;
-            } else if (node.type === 'for_statement' || node.type === 'while_statement') {
-                complexity += 1;
-            } else if (node.type === 'try_statement') {
-                complexity += 2; // One for the try block, one for each catch block
-            }
-
-            node.children.forEach(traverse);
-        }
-
-        traverse(node);
-
-        return complexity;
-    }
+    return complexity;
+  }
 }

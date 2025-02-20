@@ -1,20 +1,19 @@
-
 import {
-    category,
-    context,
-    message,
-    name,
-    priority,
-    query,
-    regex,
-    ResultType,
-    ScanResult,
-    ScanRule,
-    suggestion
-} from 'sourceloupe-types'
+  category,
+  context,
+  message,
+  name,
+  priority,
+  query,
+  regex,
+  ResultType,
+  ScanResult,
+  ScanRule,
+  suggestion,
+} from "sourceloupe-types";
 import Parser from "tree-sitter";
 import * as TreeSitter from "tree-sitter";
-import {NamingRule} from "./NamingRule";
+import { NamingRule } from "./NamingRule";
 
 @name("PropertyNamingConventions")
 @category("codestyle")
@@ -24,6 +23,4 @@ import {NamingRule} from "./NamingRule";
 @priority(1)
 @query("(field_declaration declarator: (variable_declarator)@declare)")
 @regex("")
-export class PropertyNamingConventions extends NamingRule {
-}
-// TODO: Progress
+export class PropertyNamingConventions extends NamingRule {}
