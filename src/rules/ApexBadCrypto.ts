@@ -13,7 +13,7 @@ import {
 } from 'sourceloupe-types';
 import Parser from 'tree-sitter';
 import TreeSitter from 'tree-sitter';
-import { adHocQuery } from './RulePolyfills';
+import { adHocQuery } from './RulePolyfills.js';
 
 @name('ApexBadCrypto')
 @category('security')

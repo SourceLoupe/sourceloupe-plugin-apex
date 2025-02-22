@@ -13,7 +13,7 @@ import {
 } from 'sourceloupe-types';
 // import Parser from "tree-sitter";
 // import * as TreeSitter from "tree-sitter";
-import { NamingRule } from './NamingRule';
+import { NamingRule } from './NamingRule.js';
 
 @name('MethodNamingConventions')
 @category('codestyle')
