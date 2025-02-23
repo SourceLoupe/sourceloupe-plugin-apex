@@ -1,4 +1,4 @@
-import { ScanRule, SourceLoupePlugin } from 'sourceloupe-types';
+import { ScanRule, SourceLoupeBasePlugin } from 'sourceloupe-types';
 import { ApexAssertionsShouldIncludeMessage } from './rules/ApexAssertionsShouldIncludeMessage.js';
 import { ApexBadCrypto } from './rules/ApexBadCrypto.js';
 import { ApexCRUDViolation } from './rules/ApexCRUDViolation.js';
@@ -60,7 +60,7 @@ import { UnusedLocalVariable } from './rules/UnusedLocalVariable.js';
 import { UnusedMethod } from './rules/UnusedMethod.js';
 import { WhileLoopsMustUseBraces } from './rules/WhileLoopsMustUseBraces.js';
 
-export default class ApexPlugin extends SourceLoupePlugin {
+export default class ApexPlugin extends SourceLoupeBasePlugin {
     getRules(): ScanRule[] {
         return [
             new ApexAssertionsShouldIncludeMessage(),
