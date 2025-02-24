@@ -1,7 +1,7 @@
 {
   "name": "sourceloupe-plugin-apex",
   "type": "module",
-  "version": "1.0.5",
+  "version": "1.0.15",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,8 +12,8 @@
     "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run format && npm run lint && npm run build && npm version patch",
-    "postversion": "git add package.json && git commit -m 'version bump' && git push && git push --tags"
+    "prepublishOnly": "npm run format && npm run lint && npm run build && git add package.json && git commit -m 'version bump' --allow-empty && npm version patch",
+    "postversion": "git add package.json && git commit -m 'version bump' --allow-empty && git push && git push --tags"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
@@ -32,7 +32,7 @@
     "prettier": "^3.5.1",
     "rimraf": "^6.0.1",
     "sourceloupe": "^0.0.47",
-    "sourceloupe-types": "^1.0.7",
+    "sourceloupe-types": "^1.0.12",
     "tree-sitter-sfapex": "^2.4.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
