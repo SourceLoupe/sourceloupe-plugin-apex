@@ -17,20 +17,8 @@ import { ResultType } from 'sourceloupe-types';
 @category('security')
 @context('scan')
 @message('Apex classes should declare a sharing model if DML or SOQL/SOSL is used')
-@suggestion('')
+@suggestion('If a class is not marked "with sharing" it could present an access control risk. If the class truly needs this kind of acces, use a @justification tag in the header to alert any reviewers/troubleshooters.')
 @priority(3)
-@query('(class_declaration(modifiers)@mod)')
+@query('(class_declaration(modifiers)@mod (#not-match? @mod "with sharing"))@target')
 @regex('')
-//TODO: Log Completed
-export class ApexSharingViolations extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        const results: ScanResult[] = [];
-        if (node.descendantsOfType('with_sharing').length === 0) {
-            this.Node = node;
-            const result: ScanResult = new ScanResult(this, ResultType.VIOLATION);
-            results.push(result);
-        }
-
-        return results;
-    }
-}
+export class ApexSharingViolations extends ScanRule {}

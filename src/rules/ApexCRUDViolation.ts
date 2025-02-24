@@ -12,6 +12,7 @@ import {
 } from 'sourceloupe-types';
 import Parser from 'tree-sitter';
 import { ResultType } from 'sourceloupe-types';
+import TreeSitter from 'tree-sitter';
 
 @name('ApexCRUDViolation')
 @category('security')
@@ -19,10 +20,6 @@ import { ResultType } from 'sourceloupe-types';
 @message('Validate CRUD permission before SOQL/DML operation or enforce user mode')
 @suggestion('')
 @priority(3)
-@query('(soql_query_body) @body (#not-match @body "WITH USER_MODE")')
+@query('((soql_query_body) @soql (#not-match? @soql "USER_MODE")) @target')
 @regex('')
-export class ApexCRUDViolation extends ScanRule {
-    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-}
+export class ApexCRUDViolation extends ScanRule {}

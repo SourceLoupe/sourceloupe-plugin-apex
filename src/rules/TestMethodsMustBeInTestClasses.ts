@@ -21,11 +21,11 @@ import Parser from 'tree-sitter';
 @suggestion('')
 @priority(3)
 @query(
-    '(class_declaration (modifiers) @mods (#not-match? @mods "isTest")) (method_declaration(modifiers (annotation) @methodAnno (#match? @methodAnno "isTest")))'
+    '(class_declaration (modifiers) @mods (#not-match? @mods "isTest")) (method_declaration(modifiers (annotation) @target (#match? @target "isTest")))'
 )
 @regex('')
 export class TestMethodsMustBeInTestClasses extends ScanRule {
-    validateNodes(_nodes: Parser.SyntaxNode[]): ScanResult[] {
+    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
         return [new ScanResult(this, ResultType.VIOLATION)];
     }
 }

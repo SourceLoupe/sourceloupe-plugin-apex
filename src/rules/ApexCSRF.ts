@@ -19,14 +19,7 @@ import Parser from 'tree-sitter';
 @message('Avoid making DML operations in Apex class constructor')
 @priority(3)
 @query(
-    '(constructor_body (expression_statement (query_expression) @soql))(constructor_body (expression_statement (dml_expression) @dml))(constructor_body (expression_statement (method_invocation) @method (#match? @method "Database.query|Database.queryWithBinds")))'
+    '(constructor_body (expression_statement (query_expression) @soql))(constructor_body (expression_statement (dml_expression) @dml))(constructor_body (expression_statement (method_invocation) @method (#match? @method "Database.query|Database.queryWithBinds")))@target'
 )
 @regex('')
-export class ApexCSRF extends ScanRule {
-    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
-        const results: ScanResult[] = [];
-        const result: ScanResult = new ScanResult(this, ResultType.VIOLATION);
-        results.push(result);
-        return results;
-    }
-}
+export class ApexCSRF extends ScanRule {}

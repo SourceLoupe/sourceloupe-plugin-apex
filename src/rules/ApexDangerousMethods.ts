@@ -22,11 +22,7 @@ import Parser from 'tree-sitter';
 @suggestion('')
 @priority(3)
 @query(
-    '(method_invocation object:(identifier) @object (#match? @object "Configuration") name:(identifier) @name (#match? @name "disableTriggerCRUDSecurity"))'
+    '(method_invocation object:(identifier) @object (#match? @object "Configuration") name:(identifier) @name (#match? @name "disableTriggerCRUDSecurity"))@target'
 )
 @regex('')
-export class ApexDangerousMethods extends ScanRule {
-    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-}
+export class ApexDangerousMethods extends ScanRule {}

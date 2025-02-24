@@ -29,7 +29,7 @@ export class ApexSuggestUsingNamedCred extends ScanRule {
         const results: ScanResult[] = [];
         const literals: string[] = [];
         node.descendantsOfType('identifier').forEach((ident) => {
-            if (ident.text.startsWith('http')) {
+            if (ident.text.startsWith('https')) {
                 literals.push(ident.text);
             }
         });

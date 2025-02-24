@@ -20,20 +20,18 @@ import Parser from 'tree-sitter';
 @message('Unused methods make understanding code harder')
 @suggestion('')
 @priority(3)
-@query('(method_invocation name: (identifier) @invoke) (method_declaration name: (identifier) @declared)')
+@query('(method_declaration name: (identifier) @methodName)@target')
 @regex('')
 export class UnusedMethod extends ScanRule {
-    validateNodes(nodes: Parser.SyntaxNode[]): ScanResult[] {
+    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
         const results: ScanResult[] = [];
         const methodNames: string[] = [];
         const invokedMethods: string[] = [];
-        nodes.forEach((nodeIteration) => {
-            if (nodeIteration.parent?.grammarType == 'method_invocation') {
-                invokedMethods.push(nodeIteration.text);
-            } else {
-                methodNames.push(nodeIteration.text);
-            }
-        });
+        if (_node.parent?.grammarType == 'method_invocation') {
+            invokedMethods.push(_node.text);
+        } else {
+            methodNames.push(_node.text);
+        }
         methodNames.forEach((methodName) => {
             if (!invokedMethods.includes(methodName)) {
                 results.push(new ScanResult(this, ResultType.VIOLATION));

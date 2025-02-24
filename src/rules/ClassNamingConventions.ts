@@ -26,7 +26,6 @@ import Parser from 'tree-sitter';
 export class ClassNamingConventions extends ScanRule {
     validateNode(node: Parser.SyntaxNode): ScanResult[] {
         const results: ScanResult[] = [];
-        console.log(node.startPosition);
         results.push(new ScanResult(this, ResultType.VIOLATION));
         return results;
     }

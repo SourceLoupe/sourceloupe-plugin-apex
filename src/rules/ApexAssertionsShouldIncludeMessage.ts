@@ -19,7 +19,7 @@ import Parser from 'tree-sitter';
 @message('Apex test assert statement should make use of the message parameter.')
 @suggestion('')
 @priority(3)
-@query('(parser_output)@p')
+@query('(parser_output)@target')
 @regex('')
 export class ApexAssertionsShouldIncludeMessage extends ScanRule {
     //TODO: Log Completed
