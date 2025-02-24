@@ -61,10 +61,10 @@ import { UnusedMethod } from './rules/UnusedMethod.js';
 import { WhileLoopsMustUseBraces } from './rules/WhileLoopsMustUseBraces.js';
 
 export default class ApexPlugin extends SourceLoupeBasePlugin implements SourceLoupePlugin {
-    constructor() {
-        super();
-        console.log('ApexPlugin constructor');
-    }
+    // constructor() {
+    //     super();
+    //     console.log('ApexPlugin constructor');
+    // }
 
     getRules(): ScanRule[] {
         return [
