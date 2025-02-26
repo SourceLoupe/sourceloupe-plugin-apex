@@ -1,6 +1,6 @@
-import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'sourceloupe-types';
+import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'cayce-types';
 import Parser from 'tree-sitter';
-import { ScanResult, ResultType } from 'sourceloupe-types';
+import { ScanResult, ResultType } from 'cayce-types';
 // import { ResultType } from "sourceloupe";
 //TODO: Log Completed
 

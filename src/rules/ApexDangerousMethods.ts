@@ -6,14 +6,9 @@ import {
     priority,
     query,
     regex,
-    ResultType,
-    ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
-import Parser from 'tree-sitter';
-// import * as TreeSitter from 'tree-sitter';
-// import { NamingRule } from './NamingRule';
+} from 'cayce-types';
 
 @name('ApexDangerousMethods')
 @category('security')

@@ -6,12 +6,9 @@ import {
     priority,
     query,
     regex,
-    ResultType,
-    ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
-import Parser from 'tree-sitter';
+} from 'cayce-types';
 @name('ApexCSRF')
 @category('errorprone')
 @context('scan')

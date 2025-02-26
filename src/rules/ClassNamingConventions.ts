@@ -10,10 +10,8 @@ import {
     ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
+} from 'cayce-types';
 import Parser from 'tree-sitter';
-// import * as TreeSitter from "tree-sitter";
-// import { NamingRule } from "./NamingRule";
 
 @name('PropertyNamingConventions')
 @category('codestyle')
@@ -24,7 +22,7 @@ import Parser from 'tree-sitter';
 @query('(class_declaration name:(identifier) @classname (#not-match? @classname "[a-zA-Z0-9]*"))')
 @regex('')
 export class ClassNamingConventions extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
+    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
         const results: ScanResult[] = [];
         results.push(new ScanResult(this, ResultType.VIOLATION));
         return results;

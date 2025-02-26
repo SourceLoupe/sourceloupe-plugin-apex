@@ -1,6 +1,4 @@
-import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'sourceloupe-types';
-import { ResultType, ScanResult } from 'sourceloupe-types';
-import Parser from 'tree-sitter';
+import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'cayce-types';
 
 @name('ApexSOQLInjection')
 @category('security')

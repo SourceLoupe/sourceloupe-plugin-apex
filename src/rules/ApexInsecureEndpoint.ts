@@ -6,13 +6,9 @@ import {
     priority,
     query,
     regex,
-    ResultType,
-    ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
-import Parser from 'tree-sitter';
-// import * as TreeSitter from "tree-sitter";
+} from 'cayce-types';
 
 @name('ApexInsecureEndpoint')
 @category('security')

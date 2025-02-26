@@ -10,7 +10,7 @@ import {
     ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
+} from 'cayce-types';
 import Parser from 'tree-sitter';
 import TreeSitter from 'tree-sitter';
 import { adHocQuery } from './RulePolyfills.js';

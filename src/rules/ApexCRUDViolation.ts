@@ -1,5 +1,4 @@
 import {
-    ScanResult,
     ScanRule,
     context,
     message,
@@ -9,10 +8,7 @@ import {
     regex,
     suggestion,
     category,
-} from 'sourceloupe-types';
-import Parser from 'tree-sitter';
-import { ResultType } from 'sourceloupe-types';
-import TreeSitter from 'tree-sitter';
+} from 'cayce-types';
 
 @name('ApexCRUDViolation')
 @category('security')

@@ -1,4 +1,4 @@
-import { ScanRule, SourceLoupeBasePlugin, SourceLoupePlugin } from 'sourceloupe-types';
+import { ScanRule, CayceBasePlugin, CaycePlugin } from 'cayce-types';
 import { ApexAssertionsShouldIncludeMessage } from './rules/ApexAssertionsShouldIncludeMessage.js';
 import { ApexBadCrypto } from './rules/ApexBadCrypto.js';
 import { ApexCRUDViolation } from './rules/ApexCRUDViolation.js';
@@ -60,12 +60,7 @@ import { UnusedLocalVariable } from './rules/UnusedLocalVariable.js';
 import { UnusedMethod } from './rules/UnusedMethod.js';
 import { WhileLoopsMustUseBraces } from './rules/WhileLoopsMustUseBraces.js';
 
-export default class ApexPlugin extends SourceLoupeBasePlugin implements SourceLoupePlugin {
-    // constructor() {
-    //     super();
-    //     console.log('ApexPlugin constructor');
-    // }
-
+export default class ApexPlugin extends CayceBasePlugin implements CaycePlugin {
     getRules(): ScanRule[] {
         return [
             new ApexAssertionsShouldIncludeMessage(),
