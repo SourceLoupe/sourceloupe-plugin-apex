@@ -1,7 +1,7 @@
 {
   "name": "cayce-plugin-apex",
   "type": "module",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
