@@ -1,14 +1,4 @@
-import {
-    category,
-    context,
-    message,
-    name,
-    priority,
-    query,
-    regex,
-    ScanRule,
-    suggestion,
-} from 'cayce-types';
+import { category, context, message, name, priority, query, regex, ScanRule, suggestion } from 'cayce-types';
 @name('ApexCSRF')
 @category('errorprone')
 @context('scan')

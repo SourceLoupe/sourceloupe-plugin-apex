@@ -1,14 +1,4 @@
-import {
-    ScanRule,
-    context,
-    message,
-    name,
-    priority,
-    query,
-    regex,
-    suggestion,
-    category,
-} from 'cayce-types';
+import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'cayce-types';
 
 @name('ApexCRUDViolation')
 @category('security')
