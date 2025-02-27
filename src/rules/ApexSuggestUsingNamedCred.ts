@@ -10,7 +10,7 @@ import {
     ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
+} from 'cayce-types';
 import Parser, * as TreeSitter from 'tree-sitter';
 import Query from 'tree-sitter';
 import TsSfApex from 'tree-sitter-sfapex';

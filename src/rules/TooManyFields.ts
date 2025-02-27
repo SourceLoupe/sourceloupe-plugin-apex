@@ -10,7 +10,7 @@ import {
     ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
+} from 'cayce-types';
 // import SyntaxNode from "tree-sitter";
 import Parser from 'tree-sitter';
 // TODO: Progress

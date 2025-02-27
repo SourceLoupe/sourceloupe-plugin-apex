@@ -10,8 +10,10 @@ import {
     ScanResult,
     ScanRule,
     suggestion,
-} from 'sourceloupe-types';
+} from 'cayce-types';
 import Parser from 'tree-sitter';
+import { QueryCapture, QueryMatch } from 'tree-sitter';
+import TreeSitter from 'tree-sitter';
 
 @name('ApexAssertionsShouldIncludeMessage')
 @category('bestpractices')
@@ -19,35 +21,51 @@ import Parser from 'tree-sitter';
 @message('Apex test assert statement should make use of the message parameter.')
 @suggestion('')
 @priority(3)
-@query('(parser_output)@target')
+@query(
+    '(method_invocation  object: (identifier) @objectname (#match? @objectname "Assert") name: (identifier) @methodname (argument_list) @args)'
+)
 @regex('')
 export class ApexAssertionsShouldIncludeMessage extends ScanRule {
     //TODO: Log Completed
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        const results: ScanResult[] = [];
-        const assertMethodMap: Map<string, number> = new Map([
-            ['areEqual', 3],
-            ['areNotEqual', 3],
-            ['fail', 1],
-            ['isFalse', 2],
-            ['isInstanceOfType', 3],
-            ['isNotInstanceOfType', 3],
-            ['isNotNull', 2],
-            ['isNull', 2],
-            ['isTrue', 2],
-        ]);
+    public validateQuery(
+        query: TreeSitter.Query,
+        rootNode: Parser.SyntaxNode,
+        _targetCaptureName?: string,
+        _targetMatchIndex?: number
+    ): Parser.SyntaxNode[] {
+        console.log(rootNode.text);
+        const results: Parser.SyntaxNode[] = [];
+        const matches: QueryMatch[] = query.matches(rootNode);
 
-        if (assertMethodMap.has(node.text)) {
-            if (node.nextNamedSibling !== null) {
-                const expected: number = assertMethodMap.get(node.text) ?? 0;
-                const actual: number = node.nextNamedSibling.namedChildCount;
+        if (matches.length == 0) {
+            return results;
+        }
 
-                if (expected !== actual) {
-                    const result: ScanResult = new ScanResult(this, ResultType.VIOLATION);
-                    results.push(result);
+        const captures: QueryCapture[] = matches[0].captures;
+        console.log(captures.length);
+        captures.forEach((capture) => {
+            if (capture.name == 'methodname') {
+                const assertMethodMap: Map<string, number> = new Map([
+                    ['areEqual', 3],
+                    ['areNotEqual', 3],
+                    ['fail', 1],
+                    ['isFalse', 2],
+                    ['isInstanceOfType', 3],
+                    ['isNotInstanceOfType', 3],
+                    ['isNotNull', 2],
+                    ['isNull', 2],
+                    ['isTrue', 2],
+                ]);
+                if (assertMethodMap.has(capture.node.text)) {
+                    const expected = assertMethodMap.get(capture.node.text) ?? 0;
+                    const actual: number = capture.node.nextNamedSibling?.namedChildCount ?? 0;
+                    if (expected != actual) {
+                        results.push(capture.node);
+                    }
                 }
             }
-        }
+        });
+
         return results;
     }
 }

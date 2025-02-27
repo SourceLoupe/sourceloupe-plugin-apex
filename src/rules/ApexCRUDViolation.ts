@@ -9,9 +9,9 @@ import {
     regex,
     suggestion,
     category,
-} from 'sourceloupe-types';
+} from 'cayce-types';
 import Parser from 'tree-sitter';
-import { ResultType } from 'sourceloupe-types';
+import { ResultType } from 'cayce-types';
 import TreeSitter from 'tree-sitter';
 
 @name('ApexCRUDViolation')

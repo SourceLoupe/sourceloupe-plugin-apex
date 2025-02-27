@@ -10,7 +10,7 @@ import {
     regex,
     suggestion,
     category,
-} from 'sourceloupe-types';
+} from 'cayce-types';
 import Parser from 'tree-sitter';
 
 @name('AvoidDeeplyNestedIfStmts')
