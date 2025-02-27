@@ -1,18 +1,27 @@
-import { Scanner, ScannerOptions } from 'cayce-core';
 import TsSfApex from 'tree-sitter-sfapex';
-import ApexPlugin from './index.js';
-import { ApexAssertionsShouldIncludeMessage } from './rules/ApexAssertionsShouldIncludeMessage.js';
+import { ShortIdentifierLengths } from './rules/ShortIdentifierLengths.js';
+import ScanManager from './ScanManager.js';
+import { sourceCodeToScan } from './ScanManager.js';
+import Parser, { Language } from 'tree-sitter';
+import { Scanner, ScannerOptions } from 'cayce-core';
+import { AllIdentifierLengths } from './rules/AllIdentifierLengths.js';
 
-const plugin = new ApexPlugin();
+const parser: Parser = new Parser();
+const language: Language = TsSfApex.apex;
 
-const options: ScannerOptions = {
-    language: TsSfApex.apex,
-    rules: [new ApexAssertionsShouldIncludeMessage()],
+const opt: ScannerOptions = {
+    overrideQuery: '',
     sourcePath: './apex/Test.cls',
+    language: language,
+    rules: [new ShortIdentifierLengths(), new AllIdentifierLengths()],
 };
 
-void Scanner.create(options).then((sc) =>
-    sc.run().then((r) => {
-        console.log(r);
-    })
-);
+Scanner.create(opt)
+    .then((s) => s.run().then((res) => console.log(res)))
+    .catch(() => console.log('ERROR'));
+
+// const mgr: ScanManager = new ScanManager(parser, language, sourceCodeToScan, [new ShortIdentifierLengths()]);
+//
+// void mgr.scan().then((results) => {
+//     console.log(results);
+// });
