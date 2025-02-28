@@ -12,6 +12,7 @@ import {
     suggestion,
 } from 'cayce-types';
 import Parser from 'tree-sitter';
+
 @name('ApexCSRF')
 @category('errorprone')
 @context('scan')

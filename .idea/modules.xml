@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/sourceloupe-plugin-apex.iml" filepath="$PROJECT_DIR$/.idea/sourceloupe-plugin-apex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cayce-plugin-apex.iml" filepath="$PROJECT_DIR$/cayce-plugin-apex.iml" />
     </modules>
   </component>
 </project>

@@ -12,6 +12,7 @@ import {
 } from 'cayce-types';
 import Parser from 'tree-sitter';
 import { ResultType } from 'cayce-types';
+import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'cayce-types';
 
 @name('ApexSharingViolations')
 @category('security')
