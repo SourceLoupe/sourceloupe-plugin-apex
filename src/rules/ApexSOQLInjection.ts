@@ -1,4 +1,6 @@
 import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'cayce-types';
+import { ResultType, ScanResult } from 'cayce-types';
+import Parser from 'tree-sitter';
 
 @name('ApexSOQLInjection')
 @category('security')

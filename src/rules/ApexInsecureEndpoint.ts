@@ -1,4 +1,18 @@
-import { category, context, message, name, priority, query, regex, ScanRule, suggestion } from 'cayce-types';
+import {
+    category,
+    context,
+    message,
+    name,
+    priority,
+    query,
+    regex,
+    ResultType,
+    ScanResult,
+    ScanRule,
+    suggestion,
+} from 'cayce-types';
+import Parser from 'tree-sitter';
+// import * as TreeSitter from "tree-sitter";
 
 @name('ApexInsecureEndpoint')
 @category('security')
