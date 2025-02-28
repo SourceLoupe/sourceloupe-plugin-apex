@@ -1,6 +1,6 @@
 // import { ScanRule, SourceLoupeBasePlugin, SourceLoupePlugin } from 'cayce-types';
 // TODO: Plugin types have name change
-import { ScanRule } from 'cayce-types';
+import { CayceBasePlugin, CaycePlugin, ScanRule } from 'cayce-types';
 import { ApexAssertionsShouldIncludeMessage } from './rules/ApexAssertionsShouldIncludeMessage.js';
 import { ApexBadCrypto } from './rules/ApexBadCrypto.js';
 import { ApexCRUDViolation } from './rules/ApexCRUDViolation.js';
