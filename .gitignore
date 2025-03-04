@@ -12,6 +12,7 @@ yarn-error.log*
 /.pnp
 .pnp.js
 dist/
-
+files.ts
 .vscode/*
 /src/test_harness.ts
+/src/files.ts

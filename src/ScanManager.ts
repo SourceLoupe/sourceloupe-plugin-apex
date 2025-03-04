@@ -1,11 +1,14 @@
 import Parser, { type Language, QueryCapture, SyntaxNode } from 'tree-sitter';
-import { ScanRule, ScanResult, ResultType } from 'cayce-types';
+import ScanResult, { ResultType } from './ScanResult.js';
+import { ScanRule } from './ScanRule.js';
 import TreeSitter from 'tree-sitter';
+import { ShortIdentifierLengths } from './rules/ShortIdentifierLengths.js';
+import { AllIdentifierLengths } from './rules/AllIdentifierLengths.js';
 
 export default class ScanManager {
-    private treeSitterNodeTree: Parser.Tree;
+    private treeSitterNodeTree!: Parser.Tree;
     private treeSitterParser: Parser;
-    private readonly treeSitterLanguage: Language;
+    private readonly treeSitterLanguage!: Language;
     private readonly scannerRules: ScanRule[];
     private readonly sourceCodeToScan: string;
 
@@ -18,13 +21,10 @@ export default class ScanManager {
      * @param sourceCode The source code to be scanned
      * @param rules An array of ScanRule objects that dictate what to scan for
      */
-    constructor(parser: Parser, language: Language, sourceCode: string, rules: Array<ScanRule>) {
+    constructor(parser: Parser, sourceCode: string, rules: (ShortIdentifierLengths | AllIdentifierLengths)[]) {
         this.sourceCodeToScan = sourceCode;
         this.scannerRules = rules;
-        this.treeSitterLanguage = language;
         this.treeSitterParser = parser;
-        this.treeSitterParser.setLanguage(language);
-        this.treeSitterNodeTree = parser.parse(this.sourceCodeToScan);
     }
 
     /**
@@ -77,7 +77,7 @@ export default class ScanManager {
     private async commonScan(): Promise<ScanResult[]> {
         const contextRules = this.scannerRules;
 
-        const scanResultList: ScanResult[] = [];
+        let scanResultList: ScanResult[] = [];
 
         for (const ruleIteration of contextRules) {
             // This next line normalizes the priority to the highest level of severity in case someone tries to
@@ -85,17 +85,12 @@ export default class ScanManager {
             // sarif severity levels.
             ruleIteration.Priority =
                 ruleIteration.Priority > ResultType.VIOLATION ? ResultType.VIOLATION : ruleIteration.Priority;
-            const queryText = ruleIteration.Query;
 
             try {
-                const filteredRoot: SyntaxNode = ruleIteration.preFilter(this.treeSitterNodeTree.rootNode);
-                // Prettier reformats this into a blatant syntax error
-                const captureQuery: TreeSitter.Query = new TreeSitter.Query(this.treeSitterLanguage, queryText);
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                const ruleContext = ruleIteration.Context ?? 'scan';
-                ruleIteration.validateQuery(captureQuery, filteredRoot).forEach((capturedNode) => {
-                    scanResultList.push(new ScanResult(ruleIteration, ruleIteration.ResultType, capturedNode));
+                ruleIteration.validate(this.sourceCodeToScan, this.treeSitterParser).forEach((capturedNode) => {
+                    scanResultList.push(new ScanResult(ruleIteration, capturedNode));
                 });
+                scanResultList = ruleIteration.filterResults(scanResultList);
             } catch (treeSitterError: unknown) {
                 // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                 console.error(`A tree-sitter query error occurred: ${treeSitterError}`);
@@ -105,114 +100,114 @@ export default class ScanManager {
     }
 }
 
-export const sourceCodeToScan: string = `/**
- * @description
- */
-
-@isTest
-global with sharing class Test extends BaseRepo implements Queueable, Finalizer{
-
-	public Integer x = 0;
-
-    Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
-    Blob hardCodedKey = Blob.valueOf('0000000000000000');
-    Blob data = Blob.valueOf('Data to be encrypted');
-    Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, hardCodedIV, data);
-
-   public integer prop {
-      get { return prop; }
-      set { prop = value; }
-   }
-
-   /**
-    * @description
-    */
-   public Test(){
-   		[SELECT Name FROM Account WHERE Name = 'foo'];
-        update a;
-        Database.queryWithBinds('something');
-   }
-
-	/**
-     * @de
-     */
-	@isTest
-    public static void run(Integer arg1, Integer arg2){
-    	System.runAs(foo){
-        	Integer i = 0;
-        }
-
-        Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
-        Blob hardCodedKey = Blob.valueOf('0000000000000000');
-        Blob data = Blob.valueOf('Data to be encrypted');
-        Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, hardCodedIV, data);
-        System.debug('xdddd');
-    	req.setHeader('Authorization', authorizationHeader);
-        Integer i = 0;
-        This.setEndpoint('https://');
-        This.run('http://');
-        i = 'https:';
-        String x = ApexPage.getCurrentPage().getParameters.get('url_param');
-        Database.query('SELECT Id FROM Account' + t1);
-        i = 'http:';
-        for(Integer a = 0; a < 10; a++){
-            for(Integer a = 0; a < 10; a++){
-                i++;
-                for(Integer a = 0; a < 10; a++)
-                    i++;
-
-            }
-        }
-        try{
-        	System.debug('Oh noes!');
-        }
-        catch(Exception ex){
-        }
-        try{
-        	while(true){
-            }
-            Account a = new Account(name = 'Acme1');
-            Account a = [SELECT Name FROM Account WITH USER_MODE LIMIT 4];
-            Database.query('');
-            a.addError();
-            update a;
-            a = null;
-            Database.SaveResult[] lsr = Database.insert(
-                new Account[]{a, new Account(Name = 'Acme2')},
-                false
-            );
-        }
-        catch(Exception  someDbError){
-        	x = u;
-        }
-        finally{
-        	y = z;
-        }
-        if(x == y){
-
-        }
-        String message = '';
-        Integer a, b, c;
-        Integer d, e, f;
-        if( a == b){
-        }
-        if( b == c )
-        	c = b;
-        Integer g;
-        foo.setEndpoint(message);
-        foo.setEndpoint('http://dkkdd');
-        Assert.areEqual(false,false,message + foo);
-        Assert.areEqual(false,false,message);
-        Assert.areEqual(false,false,'ddd');
-        Assert.areEqual(false,false);
-        String unescapedstring = ApexPage.getCurrentPage().ApexPage.get('url_param');
-        if(x==y)
-        	if(x==y)
-            	if(x==y)
-    }
-    public void ohe(Integer a, Integer b, Integer c, Integer d){
-    }
-    public void fooBar(){}
-
-    public String r = '';
-}`;
+// export const sourceCodeToScan: string = `/**
+//  * @description
+//  */
+//
+// @isTest
+// global with sharing class Test extends BaseRepo implements Queueable, Finalizer{
+//
+// 	public Integer x = 0;
+//
+//     Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
+//     Blob hardCodedKey = Blob.valueOf('0000000000000000');
+//     Blob data = Blob.valueOf('Data to be encrypted');
+//     Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, hardCodedIV, data);
+//
+//    public integer prop {
+//       get { return prop; }
+//       set { prop = value; }
+//    }
+//
+//    /**
+//     * @description
+//     */
+//    public Test(){
+//    		[SELECT Name FROM Account WHERE Name = 'foo'];
+//         update a;
+//         Database.queryWithBinds('something');
+//    }
+//
+// 	/**
+//      * @de
+//      */
+// 	@isTest
+//     public static void run(Integer arg1, Integer arg2){
+//     	System.runAs(foo){
+//         	Integer i = 0;
+//         }
+//
+//         Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
+//         Blob hardCodedKey = Blob.valueOf('0000000000000000');
+//         Blob data = Blob.valueOf('Data to be encrypted');
+//         Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, hardCodedIV, data);
+//         System.debug('xdddd');
+//     	req.setHeader('Authorization', authorizationHeader);
+//         Integer i = 0;
+//         This.setEndpoint('https://');
+//         This.run('http://');
+//         i = 'https:';
+//         String x = ApexPage.getCurrentPage().getParameters.get('url_param');
+//         Database.query('SELECT Id FROM Account' + t1);
+//         i = 'http:';
+//         for(Integer a = 0; a < 10; a++){
+//             for(Integer a = 0; a < 10; a++){
+//                 i++;
+//                 for(Integer a = 0; a < 10; a++)
+//                     i++;
+//
+//             }
+//         }
+//         try{
+//         	System.debug('Oh noes!');
+//         }
+//         catch(Exception ex){
+//         }
+//         try{
+//         	while(true){
+//             }
+//             Account a = new Account(name = 'Acme1');
+//             Account a = [SELECT Name FROM Account WITH USER_MODE LIMIT 4];
+//             Database.query('');
+//             a.addError();
+//             update a;
+//             a = null;
+//             Database.SaveResult[] lsr = Database.insert(
+//                 new Account[]{a, new Account(Name = 'Acme2')},
+//                 false
+//             );
+//         }
+//         catch(Exception  someDbError){
+//         	x = u;
+//         }
+//         finally{
+//         	y = z;
+//         }
+//         if(x == y){
+//
+//         }
+//         String message = '';
+//         Integer a, b, c;
+//         Integer d, e, f;
+//         if( a == b){
+//         }
+//         if( b == c )
+//         	c = b;
+//         Integer g;
+//         foo.setEndpoint(message);
+//         foo.setEndpoint('http://dkkdd');
+//         Assert.areEqual(false,false,message + foo);
+//         Assert.areEqual(false,false,message);
+//         Assert.areEqual(false,false,'ddd');
+//         Assert.areEqual(false,false);
+//         String unescapedstring = ApexPage.getCurrentPage().ApexPage.get('url_param');
+//         if(x==y)
+//         	if(x==y)
+//             	if(x==y)
+//     }
+//     public void ohe(Integer a, Integer b, Integer c, Integer d){
+//     }
+//     public void fooBar(){}
+//
+//     public String r = '';
+// }`;
