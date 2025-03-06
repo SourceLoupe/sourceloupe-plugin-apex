@@ -5,8 +5,6 @@ import {
     name,
     ruleSeverity,
     treeQuery,
-    // 
-    // ScanResult,
     ScanRule,
     suggestion,
 } from 'cayce-types';
