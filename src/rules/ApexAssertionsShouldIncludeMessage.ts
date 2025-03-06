@@ -10,9 +10,7 @@ treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-import { QueryCapture, QueryMatch } from 'tree-sitter';
-import TreeSitter from 'tree-sitter';
+
 
 @name('ApexAssertionsShouldIncludeMessage')
 @category('bestpractices')

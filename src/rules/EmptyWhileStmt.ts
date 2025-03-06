@@ -18,5 +18,5 @@ import Parser from 'tree-sitter';
 @message("Avoid empty 'while' statements")
 @suggestion('')
 @ruleSeverity(3)
-@treeQuery('(while_statement (block) @block)')
+@treeQuery('(while_statement (block) @block (#not-match? @block "\S"))')
 export class EmptyWhileStmt extends ScanRule {}
