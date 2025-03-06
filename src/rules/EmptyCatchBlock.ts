@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,17 +17,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @suggestion('')
 @message('Avoid empty catch blocks')
-@priority(3)
-@query('(catch_clause (block) @catch)')
-@regex('')
-export class EmptyCatchBlock extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        const result: ScanResult[] = [];
-        if (node.namedChildCount == 0) {
-            const scanResult: ScanResult = new ScanResult(this, ResultType.VIOLATION);
-            result.push(scanResult);
-        }
-        return result;
-    }
-}
-// TODO: Add to progress
+@ruleSeverity(3)
+@treeQuery('(catch_clause (block) @catch)')
+export class EmptyCatchBlock extends ScanRule {}

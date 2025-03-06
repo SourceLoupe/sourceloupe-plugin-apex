@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,14 +17,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message("Avoid empty 'while' statements")
 @suggestion('')
-@priority(3)
-@query('(while_statement (block) @block)')
-@regex('')
-export class EmptyWhileStmt extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        if (node.namedChildCount == 0) {
-            return [new ScanResult(this, ResultType.VIOLATION)];
-        }
-        return [];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(while_statement (block) @block)')
+export class EmptyWhileStmt extends ScanRule {}

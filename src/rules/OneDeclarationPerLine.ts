@@ -3,26 +3,20 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
 } from 'cayce-types';
 import Parser from 'tree-sitter';
 
-@name('OneDeclarationPerLine')
+@name('One Variable Declaration Per Line')
 @category('codestyle')
 @context('scan')
-@message('Use one statement for each line, it enhances code readability.')
-@suggestion('')
-@priority(1)
-@query('((variable_declarator) @one (variable_declarator) @two)')
-@regex('')
-export class OneDeclarationPerLine extends ScanRule {
-    validateNodes(_nodes: Parser.SyntaxNode[]): ScanResult[] {
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-}
+@message('Multiple variables should not be declared on the same line.')
+@suggestion('Although this is valid syntax, it can be unclear to the reader at first glance. Consider declaring each variable on a discreet line.')
+@ruleSeverity(1)
+@treeQuery('((variable_declarator) @one (variable_declarator) @two)')
+export class OneDeclarationPerLine extends ScanRule {}

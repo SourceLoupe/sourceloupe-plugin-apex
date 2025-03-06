@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,11 +17,7 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message("Hardcoding Id's is bound to break when changing environments.")
 @suggestion('')
-@priority(3)
-@query('(string_literal) @literal (#match? @literal "\\b[a-z0-9]\\w{4}0\\w{12}|[a-z0-9]\\w{4}0\\w{9}\\b")')
-@regex('')
-export class AvoidHardcodingId extends ScanRule {
-    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(string_literal) @literal (#match? @literal "\\b[a-z0-9]\\w{4}0\\w{12}|[a-z0-9]\\w{4}0\\w{9}\\b")')
+export class AvoidHardcodingId extends ScanRule {}
+``

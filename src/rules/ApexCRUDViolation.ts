@@ -4,14 +4,13 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
+    ruleSeverity,
+treeQuery,
     suggestion,
     category,
 } from 'cayce-types';
 import Parser from 'tree-sitter';
-import { ResultType } from 'cayce-types';
+import { RuleSeverity} from 'cayce-types';
 import TreeSitter from 'tree-sitter';
 
 @name('ApexCRUDViolation')
@@ -19,7 +18,6 @@ import TreeSitter from 'tree-sitter';
 @context('scan')
 @message('Validate CRUD permission before SOQL/DML operation or enforce user mode')
 @suggestion('')
-@priority(3)
-@query('((soql_query_body) @soql (#not-match? @soql "USER_MODE")) @target')
-@regex('')
+@ruleSeverity(3)
+@treeQuery('((soql_query_body) @soql (#not-match? @soql "USER_MODE")) @target')
 export class ApexCRUDViolation extends ScanRule {}

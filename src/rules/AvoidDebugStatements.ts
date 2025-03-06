@@ -1,13 +1,12 @@
 import {
     ScanResult,
-    ResultType,
+    
     ScanRule,
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
+    ruleSeverity,
+treeQuery,
     suggestion,
     category,
 } from 'cayce-types';
@@ -18,15 +17,7 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Avoid debug statements since they impact on performance')
 @suggestion('')
-@priority(3)
-@query('(method_invocation) @method')
-@regex('')
-export class AvoidDebugStatements extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        if (node.text.includes('System.debug')) {
-            return [new ScanResult(this, ResultType.VIOLATION)];
-        }
-        return [];
-    }
-}
-//TODO: Log Completed
+@ruleSeverity(3)
+@treeQuery('(method_invocation) @method')
+export class AvoidDebugStatements extends  ScanRule {}
+

@@ -3,13 +3,12 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+    treeQuery,
+
     ScanResult,
     ScanRule,
-    suggestion,
+    suggestion
 } from 'cayce-types';
 import Parser from 'tree-sitter';
 
@@ -18,15 +17,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Methods must have a header comment with a @description tag')
 @suggestion('')
-@priority(1)
-@query('(method_declaration) @method')
-@regex('')
-export class MethodHeaderComment extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        const beforeMethodNode: Parser.SyntaxNode = node.previousNamedSibling ?? node;
-        if (beforeMethodNode.grammarType == 'block_comment' && beforeMethodNode.text.includes('description')) {
-            return [];
-        }
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-}
+@ruleSeverity(1)
+@treeQuery('(method_declaration) @method')
+export class MethodHeaderComment extends  ScanRule {}

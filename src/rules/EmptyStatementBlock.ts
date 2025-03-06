@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -19,14 +18,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Avoid empty block statements.')
 @suggestion('')
-@priority(3)
-@query('(block) @block')
-@regex('')
-export class EmptyStatementBlock extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        if (node.namedChildCount == 0) {
-            return [new ScanResult(this, ResultType.VIOLATION)];
-        }
-        return [];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(block) @block')
+export class EmptyStatementBlock extends ScanRule {}

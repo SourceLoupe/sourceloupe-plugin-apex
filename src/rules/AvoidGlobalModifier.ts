@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -17,12 +16,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Avoid using global modifier')
 @suggestion('')
-@priority(3)
-@query('(global)@mod')
-@regex('')
-export class AvoidGlobalModifier extends ScanRule {
-    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-    //TODO: Log Completed
-}
+@ruleSeverity(3)
+@treeQuery('(global)@mod')
+export class AvoidGlobalModifier extends ScanRule {}

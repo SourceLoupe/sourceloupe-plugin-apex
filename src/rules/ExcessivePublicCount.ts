@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,15 +17,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('The class {0} has {1} public methods, attributes, and properties (limit: {2})')
 @suggestion('')
-@priority(3)
-@query('(modifier(public)@pub)')
-@regex('')
-export class ExcessivePublicCount extends ScanRule {
-    validateNodes(nodes: Parser.SyntaxNode[]): ScanResult[] {
-        if (nodes.length >= 10) {
-            return [new ScanResult(this, ResultType.VIOLATION)];
-        }
-        return [];
-    }
-}
-// TODO: Progress
+@ruleSeverity(3)
+@treeQuery('(modifier(public)@pub)')
+export class ExcessivePublicCount extends ScanRule {}

@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -19,9 +18,8 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Apex callouts should use encrypted communication channels')
 @suggestion('')
-@priority(3)
-@query(
+@ruleSeverity(3)
+@treeQuery(
     '(method_invocation name: (identifier) @methodname (#match? @methodname "setEndpoint") (argument_list (string_literal) @literal (#match? @literal "http:")))@target'
 )
-@regex('')
 export class ApexInsecureEndpoint extends ScanRule {}

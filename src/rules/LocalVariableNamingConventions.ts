@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    // ResultType,
+    ruleSeverity,
+treeQuery,
+    // 
     // ScanResult,
     // ScanRule,
     suggestion,
@@ -20,7 +19,6 @@ import { NamingRule } from './NamingRule.js';
 @context('scan')
 @message("The {0} name ''{1}'' doesn''t match ''{2}''")
 @suggestion('')
-@priority(1)
-@query('(variable_declarator name:(identifier) @param (#not-match? @param "[a-zA-Z0-9]*"))')
-@regex('')
+@ruleSeverity(1)
+@treeQuery('(variable_declarator name:(identifier) @param (#not-match? @param "[a-zA-Z0-9]*"))')
 export class LocalVariableNamingConventions extends NamingRule {}

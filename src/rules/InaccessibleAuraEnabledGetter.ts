@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    // ResultType,
+    ruleSeverity,
+treeQuery,
+    // 
     // ScanResult,
     ScanRule,
     suggestion,
@@ -20,7 +19,6 @@ import {
 @context('scan')
 @message('AuraEnabled getter must be public or global if is referenced in Lightning components')
 @suggestion('')
-@priority(3)
-@query('(parser_output)@p')
-@regex('')
+@ruleSeverity(3)
+@treeQuery('(parser_output)@p')
 export class InaccessibleAuraEnabledGetter extends ScanRule {}
