@@ -8,8 +8,6 @@ import {
     ScanRule,
     suggestion,
 } from 'cayce-types';
-// import * as TreeSitter from 'tree-sitter';
-// import { NamingRule } from './NamingRule';
 @name('ApexDangerousMethods')
 @category('security')
 @context('scan')

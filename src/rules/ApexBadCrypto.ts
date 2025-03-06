@@ -8,8 +8,6 @@ import {
     ScanRule,
     suggestion,
 } from 'cayce-types';
-import TreeSitter from 'tree-sitter';
-import { adHocQuery } from './RulePolyfills.js';
 @name('ApexBadCrypto')
 @category('security')
 @context('scan')

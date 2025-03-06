@@ -8,6 +8,7 @@ import {
     ScanRule,
     suggestion
 } from 'cayce-types';
+import Parser from 'tree-sitter';
 @name('TooManyFields')
 @category('design')
 @context('scan')

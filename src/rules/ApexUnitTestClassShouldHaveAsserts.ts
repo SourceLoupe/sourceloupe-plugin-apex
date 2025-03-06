@@ -1,7 +1,4 @@
 import { ScanRule, context, message, name, ruleSeverity, treeQuery,  suggestion, category } from 'cayce-types';
-import { ScanResult, RuleSeverity} from 'cayce-types';
-// import { RuleSeverity} from "sourceloupe";
-
 
 @name('ApexUnitTestClassShouldHaveAsserts')
 @category('bestpractices')
