@@ -3,7 +3,7 @@ import {    ScanRule,
     message,
     name,
     ruleSeverity,
-treeQuery,
+    treeQuery,
     suggestion,
     category,
 } from 'cayce-types';

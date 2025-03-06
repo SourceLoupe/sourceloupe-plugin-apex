@@ -4,7 +4,7 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
+    treeQuery,
     // 
     // ScanResult,
     ScanRule,
