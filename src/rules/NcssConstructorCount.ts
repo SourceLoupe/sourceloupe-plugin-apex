@@ -10,7 +10,7 @@ import {
 } from 'cayce-types';
 
 
-// import { NamingRule } from "./NamingRule";
+
 @name('NcssConstructorCount')
 @category('design')
 @context('scan')

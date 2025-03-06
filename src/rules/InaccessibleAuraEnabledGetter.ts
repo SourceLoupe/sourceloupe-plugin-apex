@@ -10,7 +10,7 @@ import {
 } from 'cayce-types';
 
 
-// import { NamingRule } from "./NamingRule";
+
 @name('InaccessibleAuraEnabledGetter')
 @category('errorprone')
 @context('scan')
