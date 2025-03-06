@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,12 +17,7 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Apex test methods should have @isTest annotation.')
 @suggestion('')
-@priority(3)
-@query('(modifiers(modifier(testMethod)@mod))')
-@regex('')
-//TODO: Log Completed
-export class ApexUnitTestMethodShouldHaveIsTestAnnotation extends ScanRule {
-    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(modifiers(modifier(testMethod)@mod))')
+
+export class ApexUnitTestMethodShouldHaveIsTestAnnotation extends ScanRule {}

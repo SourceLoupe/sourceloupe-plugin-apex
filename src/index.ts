@@ -61,9 +61,17 @@ import { TooManyFields } from './rules/TooManyFields.js';
 import { UnusedLocalVariable } from './rules/UnusedLocalVariable.js';
 import { UnusedMethod } from './rules/UnusedMethod.js';
 import { WhileLoopsMustUseBraces } from './rules/WhileLoopsMustUseBraces.js';
+import TreeSitter from 'tree-sitter';
+import TsSfApex from 'tree-sitter-sfapex';
 
 export default class ApexPlugin extends CayceBasePlugin implements CaycePlugin {
-    getRules(): ScanRule[] {
+
+
+    getLanguage(): TreeSitter.Language{
+        return TsSfApex.apex;
+    }
+
+    registerRules() {
         return [
             new ApexAssertionsShouldIncludeMessage(),
             new ApexBadCrypto(),

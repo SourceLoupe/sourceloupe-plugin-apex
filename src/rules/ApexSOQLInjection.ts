@@ -1,5 +1,5 @@
-import { ScanRule, context, message, name, priority, query, regex, suggestion, category } from 'cayce-types';
-import { ResultType, ScanResult } from 'cayce-types';
+import { ScanRule, context, message, name, ruleSeverity, treeQuery,  suggestion, category } from 'cayce-types';
+import {  ScanResult } from 'cayce-types';
 import Parser from 'tree-sitter';
 
 @name('ApexSOQLInjection')
@@ -7,8 +7,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Avoid untrusted/unescaped variables in DML query')
 @suggestion('')
-@priority(3)
-@query('(method_invocation(identifier)@one(identifier)@two (#match? @one "Database") (#eq? @two "query"))@target')
-@regex('')
-//TODO: Log Completed
+@ruleSeverity(3)
+@treeQuery('(method_invocation(identifier)@one(identifier)@two (#match? @one "Database") (#eq? @two "query"))@target')
 export class ApexSOQLInjection extends ScanRule {}

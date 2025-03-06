@@ -4,9 +4,8 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
+    ruleSeverity,
+treeQuery,
     suggestion,
     category,
 } from 'cayce-types';
@@ -18,7 +17,6 @@ import {
 @suggestion(
     'If a class is not marked "with sharing" it could present an access control risk. If the class truly needs this kind of acces, use a @justification tag in the header to alert any reviewers/troubleshooters.'
 )
-@priority(3)
-@query('(class_declaration(modifiers)@mod (#not-match? @mod "with sharing"))@target')
-@regex('')
+@ruleSeverity(3)
+@treeQuery('(class_declaration(modifiers)@mod (#not-match? @mod "with sharing"))@target')
 export class ApexSharingViolations extends ScanRule {}

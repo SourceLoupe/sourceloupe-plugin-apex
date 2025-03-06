@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -19,14 +18,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message("Avoid empty 'if' statements")
 @suggestion('')
-@priority(3)
-@query('(if_statement consequence: (block)@block)')
-@regex('')
-export class EmptyIfStmt extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        if (node.namedChildCount == 0) {
-            return [new ScanResult(this, ResultType.VIOLATION)];
-        }
-        return [];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(if_statement consequence: (block)@block)')
+export class EmptyIfStmt extends ScanRule {}

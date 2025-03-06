@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    // ResultType,
+    ruleSeverity,
+treeQuery,
+    // 
     // ScanResult,
     ScanRule,
     suggestion,
@@ -20,9 +19,6 @@ import {
 @context('scan')
 @message('Avoid using if statements without curly braces')
 @suggestion('')
-@priority(3)
-@query('(if_statement consequence:(block) @block (#match? @block "\\{*\\}"))')
-@regex('')
-export class IfStmtsMustUseBraces extends ScanRule {
-    // No parsable methods found
-}
+@ruleSeverity(3)
+@treeQuery('(if_statement consequence:(block) @block (#match? @block "\\{*\\}"))')
+export class IfStmtsMustUseBraces extends ScanRule {}

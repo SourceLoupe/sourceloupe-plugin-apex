@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,14 +17,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @suggestion('')
 @message('Avoid really long classes.')
-@priority(3)
-@query('(parser_output)@p')
-@regex('')
-export class ExcessiveClassLength extends ScanRule {
-    validateNode(rootNode: Parser.SyntaxNode): ScanResult[] {
-        if (rootNode.endPosition.row > 2000) {
-            return [new ScanResult(this, ResultType.VIOLATION)];
-        }
-        return [];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(parser_output)@p')
+export class ExcessiveClassLength extends ScanRule {}

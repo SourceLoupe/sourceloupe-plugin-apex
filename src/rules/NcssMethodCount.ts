@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    // ResultType,
+    ruleSeverity,
+treeQuery,
+    // 
     // ScanResult,
     ScanRule,
     suggestion,
@@ -19,7 +18,6 @@ import {
 @context('scan')
 @message("The method ''{0}()'' has an NCSS method count of {1} (limit: {2})")
 @suggestion('')
-@priority(3)
-@query('(parser_output)@p')
-@regex('')
+@ruleSeverity(3)
+@treeQuery('(parser_output)@p')
 export class NcssMethodCount extends ScanRule {}

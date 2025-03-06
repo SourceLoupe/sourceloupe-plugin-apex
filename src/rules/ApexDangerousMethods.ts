@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -20,9 +19,8 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('Calling potentially dangerous method')
 @suggestion('')
-@priority(3)
-@query(
+@ruleSeverity(3)
+@treeQuery(
     '(method_invocation object:(identifier) @object (#match? @object "Configuration") name:(identifier) @name (#match? @name "disableTriggerCRUDSecurity"))@target'
 )
-@regex('')
 export class ApexDangerousMethods extends ScanRule {}

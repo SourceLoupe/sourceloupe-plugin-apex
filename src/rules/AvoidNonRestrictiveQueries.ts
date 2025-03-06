@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    // ResultType,
+    ruleSeverity,
+treeQuery,
+    // 
     // ScanResult,
     ScanRule,
     suggestion,
@@ -18,7 +17,6 @@ import {
 @context('scan')
 @message('Avoid {0} queries without a where or limit statement')
 @suggestion('')
-@priority(3)
-@query('((soql_query_body) @soql (#match? @soql "WHERE|LIMIT"))')
-@regex('')
+@ruleSeverity(3)
+@treeQuery('((soql_query_body) @soql (#match? @soql "WHERE|LIMIT"))')
 export class AvoidNonRestrictiveQueries extends ScanRule {}

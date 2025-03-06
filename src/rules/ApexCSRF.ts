@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,9 +17,8 @@ import Parser from 'tree-sitter';
 @context('scan')
 @suggestion('')
 @message('Avoid making DML operations in Apex class constructor')
-@priority(3)
-@query(
+@ruleSeverity(3)
+@treeQuery(
     '(constructor_body (expression_statement (query_expression) @soql))(constructor_body (expression_statement (dml_expression) @dml))(constructor_body (expression_statement (method_invocation) @method (#match? @method "Database.query|Database.queryWithBinds")))@target'
 )
-@regex('')
 export class ApexCSRF extends ScanRule {}

@@ -16,3 +16,11 @@ files.ts
 .vscode/*
 /src/test_harness.ts
 /src/files.ts
+/src/ScanManager.ts
+/src/ScanResult.ts
+/src/ScanRule.ts
+/src/ScanRuleProperties.ts
+/src/results.txt
+/src/test-harness.ts
+/test/*
+/src/rules/list.md

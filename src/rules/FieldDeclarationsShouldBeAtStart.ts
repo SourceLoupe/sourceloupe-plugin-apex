@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -19,16 +18,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message("Field declaration for ''{0}'' should be before method declarations in its class")
 @suggestion('')
-@priority(3)
-@query('(field_declaration) @field')
-@regex('')
-export class FieldDeclarationsShouldBeAtStart extends ScanRule {
-    validateNode(node: Parser.SyntaxNode): ScanResult[] {
-        while (node.previousNamedSibling != null) {
-            if (node.previousNamedSibling.grammarType == 'method_declaration') {
-                return [new ScanResult(this, ResultType.VIOLATION)];
-            }
-        }
-        return [];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(field_declaration) @field')
+export class FieldDeclarationsShouldBeAtStart extends ScanRule {}

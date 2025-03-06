@@ -3,10 +3,9 @@ import {
     context,
     message,
     name,
-    priority,
-    query,
-    regex,
-    ResultType,
+    ruleSeverity,
+treeQuery,
+    
     ScanResult,
     ScanRule,
     suggestion,
@@ -18,11 +17,6 @@ import Parser from 'tree-sitter';
 @context('scan')
 @message('DescribeSObjectResult could be being loaded eagerly with all child relationships.')
 @suggestion('')
-@priority(3)
-@query('(method_invocation object:(identifier) @object (#match? @object "DescribeSObjectResult"))@all')
-@regex('')
-export class EagerlyLoadedDescribeSObjectResult extends ScanRule {
-    validateNode(_node: Parser.SyntaxNode): ScanResult[] {
-        return [new ScanResult(this, ResultType.VIOLATION)];
-    }
-}
+@ruleSeverity(3)
+@treeQuery('(method_invocation object:(identifier) @object (#match? @object "DescribeSObjectResult"))@all')
+export class EagerlyLoadedDescribeSObjectResult extends ScanRule {}
