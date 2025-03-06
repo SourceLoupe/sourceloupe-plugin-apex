@@ -10,10 +10,9 @@ treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-// import Parser from "tree-sitter";
-// import * as TreeSitter from "tree-sitter";
-// import { NamingRule } from "./NamingRule";
 
+
+// import { NamingRule } from "./NamingRule";
 @name('IfStmtsMustUseBraces')
 @category('codestyle')
 @context('scan')

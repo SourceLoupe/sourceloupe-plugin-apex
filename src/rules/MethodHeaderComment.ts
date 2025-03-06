@@ -4,14 +4,9 @@ import {
     message,
     name,
     ruleSeverity,
-    treeQuery,
-
-    ScanResult,
-    ScanRule,
+    treeQuery,ScanRule,
     suggestion
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-
 @name('MethodHeaderComment')
 @category('bestpractices')
 @context('scan')

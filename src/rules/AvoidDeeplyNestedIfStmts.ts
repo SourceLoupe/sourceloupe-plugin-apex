@@ -1,7 +1,4 @@
-import {
-    ScanResult,
-    
-    ScanRule,
+import {    ScanRule,
     context,
     message,
     name,
@@ -10,8 +7,6 @@ treeQuery,
     suggestion,
     category,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-
 @name('AvoidDeeplyNestedIfStmts')
 @category('design')
 @context('scan')
@@ -20,4 +15,3 @@ import Parser from 'tree-sitter';
 @ruleSeverity(3)
 @treeQuery('(if_statement consequence: (if_statement consequence:(if_statement)))@outer')
 export class AvoidDeeplyNestedIfStmts extends ScanRule {}
-//TODO: Log Completed

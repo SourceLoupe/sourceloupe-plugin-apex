@@ -4,9 +4,7 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    
-    ScanResult,
+    treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';

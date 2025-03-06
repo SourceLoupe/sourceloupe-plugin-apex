@@ -1,8 +1,7 @@
 import { ScanRule, context, message, name, ruleSeverity, treeQuery,  suggestion, category } from 'cayce-types';
-import Parser from 'tree-sitter';
 import { ScanResult, RuleSeverity} from 'cayce-types';
 // import { RuleSeverity} from "sourceloupe";
-//TODO: Log Completed
+
 
 @name('ApexUnitTestClassShouldHaveAsserts')
 @category('bestpractices')

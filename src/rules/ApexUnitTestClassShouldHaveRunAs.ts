@@ -4,14 +4,11 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    
-    ScanResult,
+    treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-//TODO: Log Completed
+
 
 @name('ApexUnitTestClassShouldHaveRunAs')
 @category('bestpractices')

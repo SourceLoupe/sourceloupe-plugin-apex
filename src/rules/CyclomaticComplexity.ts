@@ -4,14 +4,10 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    
-    ScanResult,
+    treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-
 @name('CyclomaticComplexity')
 @category('design')
 @context('scan')

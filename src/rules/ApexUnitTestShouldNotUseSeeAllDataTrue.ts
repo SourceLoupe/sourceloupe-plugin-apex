@@ -1,7 +1,4 @@
-import {
-    ScanResult,
-    
-    ScanRule,
+import {    ScanRule,
     context,
     message,
     name,
@@ -10,8 +7,6 @@ treeQuery,
     suggestion,
     category,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-
 @name('ApexUnitTestShouldNotUseSeeAllDataTrue')
 @category('bestpractices')
 @context('scan')
