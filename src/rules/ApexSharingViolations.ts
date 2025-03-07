@@ -1,15 +1,13 @@
 import {
-    ScanResult,
-    ScanRule,
+ScanRule,
     context,
     message,
     name,
     ruleSeverity,
-treeQuery,
+    treeQuery,
     suggestion,
     category,
 } from 'cayce-types';
-
 @name('ApexSharingViolations')
 @category('security')
 @context('scan')

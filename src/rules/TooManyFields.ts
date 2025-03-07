@@ -5,14 +5,10 @@ import {
     name,
     treeQuery,
     ruleSeverity,
-    ScanResult,
     ScanRule,
     suggestion
 } from 'cayce-types';
-// import SyntaxNode from "tree-sitter";
-import Parser, { QueryCapture } from 'tree-sitter';
-import TreeSitter from 'tree-sitter';
-// TODO: Progress
+import Parser from 'tree-sitter';
 @name('TooManyFields')
 @category('design')
 @context('scan')
@@ -20,4 +16,14 @@ import TreeSitter from 'tree-sitter';
 @suggestion('')
 @ruleSeverity(3)
 @treeQuery('(class_body(field_declaration) @1)')
-export class TooManyFields extends ScanRule {}
+export class TooManyFields extends ScanRule {
+    public validate(targetSource: string, parser: Parser): Parser.SyntaxNode[] {
+        const results: Parser.SyntaxNode[] = super.validate(targetSource, parser);
+        if(results.length > 20) {
+            return results;
+        }
+        else{
+            return [];
+        }
+    }
+}

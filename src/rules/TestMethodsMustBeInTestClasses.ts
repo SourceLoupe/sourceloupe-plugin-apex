@@ -4,14 +4,11 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    
-    ScanResult,
+    treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-// import * as TreeSitter from "tree-sitter";
+
 
 @name('TestMethodsMustBeInTestClasses')
 @category('errorprone')
@@ -23,4 +20,3 @@ import Parser from 'tree-sitter';
     '(class_declaration (modifiers) @mods (#not-match? @mods "isTest")) (method_declaration(modifiers (annotation) @target (#match? @target "isTest")))'
 )
 export class TestMethodsMustBeInTestClasses extends ScanRule {}
-

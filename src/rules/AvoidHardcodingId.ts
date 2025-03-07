@@ -4,14 +4,10 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    
-    ScanResult,
+    treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-// import * as TreeSitter from "tree-sitter";
 @name('AvoidHardcodingId')
 @category('errorprone')
 @context('scan')
@@ -20,4 +16,3 @@ import Parser from 'tree-sitter';
 @ruleSeverity(3)
 @treeQuery('(string_literal) @literal (#match? @literal "\\b[a-z0-9]\\w{4}0\\w{12}|[a-z0-9]\\w{4}0\\w{9}\\b")')
 export class AvoidHardcodingId extends ScanRule {}
-``

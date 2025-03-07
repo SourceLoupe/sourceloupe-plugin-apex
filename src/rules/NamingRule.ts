@@ -8,7 +8,6 @@ import {
     suggestion,
     ScanRule
 } from 'cayce-types';
-
 @name('FormalParameterNamingConventions')
 @category('codestyle')
 @context('scan')

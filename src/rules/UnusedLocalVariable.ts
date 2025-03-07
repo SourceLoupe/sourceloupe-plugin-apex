@@ -4,14 +4,10 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    
-    ScanResult,
+    treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
-
 @name('UnusedLocalVariable')
 @category('bestpractices')
 @context('scan')
@@ -20,5 +16,4 @@ import Parser from 'tree-sitter';
 @ruleSeverity(1)
 @treeQuery('(parser_output)@p')
 export class UnusedLocalVariable extends ScanRule {
-
 }

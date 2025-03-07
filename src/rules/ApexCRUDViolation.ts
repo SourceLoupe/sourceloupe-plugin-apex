@@ -1,18 +1,15 @@
 import {
-    ScanResult,
-    ScanRule,
+ScanRule,
     context,
     message,
     name,
     ruleSeverity,
-treeQuery,
+    treeQuery,
     suggestion,
     category,
 } from 'cayce-types';
-import Parser from 'tree-sitter';
 import { RuleSeverity} from 'cayce-types';
 import TreeSitter from 'tree-sitter';
-
 @name('ApexCRUDViolation')
 @category('security')
 @context('scan')

@@ -4,16 +4,12 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    // 
-    // ScanResult,
-    // ScanRule,
+    treeQuery,
     suggestion,
 } from 'cayce-types';
-// import Parser from "tree-sitter";
-// import * as TreeSitter from "tree-sitter";
-import { NamingRule } from './NamingRule.js';
 
+
+import { NamingRule } from './NamingRule.js';
 @name('LocalVariableNamingConventions')
 @category('codestyle')
 @context('scan')

@@ -4,15 +4,13 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    // 
-    // ScanResult,
+    treeQuery,
     ScanRule,
     suggestion,
 } from 'cayce-types';
-// import Parser from "tree-sitter";
-// import * as TreeSitter from "tree-sitter";
-// import { NamingRule } from "./NamingRule";
+
+
+
 @name('NcssTypeCount')
 @category('design')
 @context('scan')

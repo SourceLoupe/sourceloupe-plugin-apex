@@ -4,16 +4,12 @@ import {
     message,
     name,
     ruleSeverity,
-treeQuery,
-    // 
-    // ScanResult,
-    // ScanRule,
+    treeQuery,
     suggestion,
 } from 'cayce-types';
-// import Parser from "tree-sitter";
-// import * as TreeSitter from "tree-sitter";
-import { NamingRule } from './NamingRule.js';
 
+
+import { NamingRule } from './NamingRule.js';
 @name('MethodNamingConventions')
 @category('codestyle')
 @context('scan')
@@ -22,4 +18,3 @@ import { NamingRule } from './NamingRule.js';
 @ruleSeverity(1)
 @treeQuery('(method_declaration name:(identifier) @param (#not-match? @param "[a-zA-Z0-9]*"))')
 export class MethodNamingConventions extends NamingRule {}
-// TODO: Progress
