@@ -8,8 +8,6 @@ ScanRule,
     suggestion,
     category,
 } from 'cayce-types';
-import { RuleSeverity} from 'cayce-types';
-import TreeSitter from 'tree-sitter';
 @name('ApexCRUDViolation')
 @category('security')
 @context('scan')

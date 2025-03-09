@@ -1,4 +1,4 @@
-import { ruleSeverity, category, context, message, name, treeQuery, suggestion , ScanRule} from 'cayce-types';
+import { RuleSeverity, ruleSeverity, category, context, message, name, treeQuery, suggestion , ScanRule} from 'cayce-types';
 
 
 @name('Variable/Parameter/Constant appropriate in length')

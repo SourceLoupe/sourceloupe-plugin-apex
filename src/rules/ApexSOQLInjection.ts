@@ -1,4 +1,4 @@
-import { ScanRule, context, message, name, ruleSeverity, treeQuery,  suggestion, category } from 'cayce-types';
+import { ScanRule, context, message, name, RuleSeverity, ruleSeverity, treeQuery,  suggestion, category } from 'cayce-types';
 import {  ScanResult } from 'cayce-types';
 @name('ApexSOQLInjection')
 @category('security')

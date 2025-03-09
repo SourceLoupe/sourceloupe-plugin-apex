@@ -3,6 +3,7 @@ import {
     context,
     message,
     name,
+    RuleSeverity,
     ruleSeverity,
     treeQuery,
     suggestion,
