@@ -46,7 +46,11 @@
     "@typescript-eslint/parser": "^8.24.0",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
+<<<<<<< HEAD
     "eslint-plugin-prettier": "^5.2.3",
+=======
+    "globals": "^16.0.0",
+>>>>>>> e256018b8bb25b066f0775d6b8880eb59fd671cd
     "jest": "^29.7.0",
     "prettier": "^3.5.1",
     "shx": "^0.3.4",

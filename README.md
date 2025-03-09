@@ -77,4 +77,3 @@ Cayce plugins follow a testing ethod similar to PMD: the tests themselves cconta
        `
   }
 ```
-
