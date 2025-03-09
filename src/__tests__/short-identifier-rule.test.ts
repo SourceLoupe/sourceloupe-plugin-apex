@@ -1,7 +1,5 @@
-// my-function.test.ts
 import { ShortIdentifierLengths } from '../rules/ShortIdentifierLengths.js';
 import { CayceBaseRuleTest, CayceRuleTestData } from './cayce-rule-test.js';
-
 
 export const ShortIdentifierLengthsPositiveTestData: CayceRuleTestData = {
     name: 'All variables that have a name length less than three.',

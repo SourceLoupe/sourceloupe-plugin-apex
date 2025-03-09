@@ -4,8 +4,8 @@ import {
     message,
     name,
     treeQuery,
-    ruleSeverity,
-    ScanRule,
+    RuleSeverity,
+    ruleSeverity,    ScanRule,
     suggestion
 } from 'cayce-types';
 import Parser from 'tree-sitter';

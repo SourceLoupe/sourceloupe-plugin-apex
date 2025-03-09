@@ -1,4 +1,4 @@
-import { ruleSeverity, category, context, message, name, treeQuery, ScanRule, suggestion } from 'cayce-types';
+import { RuleSeverity, ruleSeverity, category, context, message, name, treeQuery, ScanRule, suggestion } from 'cayce-types';
 
 
 @name('Variable, constant or parameter name too short')
