@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "test": "jest",
+    "test": "node --experimental-vm-modules --loader ts-node/esm node_modules/jest/bin/jest.js ",
     "test:watch": "jest --watch",
     "lint": "eslint src",
     "lint:fix": "eslint src --ext .ts --fix",

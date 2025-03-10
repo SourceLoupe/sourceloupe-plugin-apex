@@ -1,16 +1,31 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "declaration": true,
+    "declarationDir": "./dist",
+    "declarationMap": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": ["es6"],
     "module": "NodeNext",
     "moduleResolution": "nodenext",
-    "allowImportingTsExtensions": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "composite": true,
-    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "./dist",
+    "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "rootDir": "./src",
     "skipLibCheck": true,
-    "outDir": "./dist"
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
+    "typeRoots": ["./node_modules/@types", "./src/types", "./node_modules/tree-sitter-sfapex"],
+    "types": ["node", "jest"]
   },
-  "include": ["src"]
+  "exclude": ["node_modules", "dist", "jest.config.ts"],
+  "include": ["src/**/*", "src/index.ts"],
+  "ts-node": {
+    "esm": true
+  }
 }

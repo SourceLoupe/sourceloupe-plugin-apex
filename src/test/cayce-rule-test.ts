@@ -57,7 +57,7 @@ export class CayceBaseRuleTest{
         parserInstance.setLanguage(TsSfApex.apex);
         const ruleResults: Parser.SyntaxNode[] = ruleUnderTest.validate(this.configuration.sourceToTest, parserInstance);
         const unitTestErrors: string[] = [];
-        for(let actualIndex = 0; actualIndex < length; ++actualIndex){
+        for(let actualIndex = 0; actualIndex < ruleResults.length; ++actualIndex){
             const actual: string = ruleResults[actualIndex].grammarType;
             const expected: string = this.configuration.expectedResults[actualIndex];
             if(actual === expected){
